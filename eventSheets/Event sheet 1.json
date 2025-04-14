@@ -196,6 +196,399 @@
 				}
 			],
 			"sid": 211626064823918
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Basic_Entity_Damage_Sys",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [],
+			"sid": 541556889829852
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "entities",
+					"sid": 353402649545901,
+					"parameters": {
+						"object": "damage"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "entities",
+					"sid": 807366983320450,
+					"parameters": {
+						"instance-variable": "numid",
+						"comparison": 1,
+						"value": "damage.numid_num"
+					}
+				},
+				{
+					"id": "is-flashing",
+					"objectClass": "entities",
+					"sid": 158705247935542,
+					"behaviorType": "Flash",
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "entities",
+					"sid": 565114569250985,
+					"parameters": {
+						"instance-variable": "hp",
+						"value": "damage.dmg"
+					}
+				},
+				{
+					"id": "flash",
+					"objectClass": "entities",
+					"sid": 463789719179942,
+					"behaviorType": "Flash",
+					"parameters": {
+						"on-time": "0.05",
+						"off-time": "0.05",
+						"duration": "0.25"
+					}
+				},
+				{
+					"id": "play-by-name",
+					"objectClass": "Audio",
+					"sid": 221091012059433,
+					"parameters": {
+						"folder": "sounds",
+						"audio-file-name": "damage.SFX",
+						"loop": "not-looping",
+						"volume": "damage.SFX_VOLUME",
+						"stereo-pan": "0",
+						"tag-optional": "damage.SFX_ID"
+					}
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "entities",
+					"sid": 816582958295773,
+					"behaviorType": "knockback",
+					"parameters": {
+						"speed": "700"
+					}
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "entities",
+					"sid": 527238262756934,
+					"behaviorType": "knockback",
+					"parameters": {
+						"angle": "damage.Angle"
+					}
+				}
+			],
+			"sid": 193664729274904
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Entity_Conditions",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "entities",
+							"sid": 750163279231643,
+							"parameters": {
+								"instance-variable": "mirror_state",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 798109963199131,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "entities",
+									"sid": 904456044086580,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "player.x"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "entities",
+									"sid": 619568687575645,
+									"parameters": {
+										"state": "mirrored"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "entities",
+									"sid": 695086347237459,
+									"parameters": {
+										"instance-variable": "flip_angle",
+										"value": "180"
+									}
+								}
+							],
+							"sid": 446025922189788
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "entities",
+									"sid": 281793873072769,
+									"parameters": {
+										"comparison": 2,
+										"x-co-ordinate": "player.x"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "entities",
+									"sid": 233852044226953,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "entities",
+									"sid": 509493900455354,
+									"parameters": {
+										"instance-variable": "flip_angle",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 862621703401008
+						}
+					]
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "SFX",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-created",
+									"objectClass": "damage",
+									"sid": 309552786115860
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "damage",
+									"sid": 896543377319272,
+									"parameters": {
+										"instance-variable": "PLAYSFXOFFSCREEN",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "play-by-name",
+									"objectClass": "Audio",
+									"sid": 761303046418830,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "damage.SFX_CREATE",
+										"loop": "not-looping",
+										"volume": "damage.SFX_VOLUME",
+										"stereo-pan": "0",
+										"tag-optional": "damage.SFX_CREATE"
+									}
+								}
+							],
+							"sid": 681578663991471
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-created",
+									"objectClass": "damage",
+									"sid": 339166842963426
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "damage",
+									"sid": 852172250616384,
+									"parameters": {
+										"instance-variable": "PLAYSFXOFFSCREEN",
+										"comparison": 0,
+										"value": "0"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "is-on-screen",
+									"objectClass": "damage",
+									"sid": 175303174293443
+								}
+							],
+							"actions": [
+								{
+									"id": "play-by-name",
+									"objectClass": "Audio",
+									"sid": 161592697186464,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "damage.SFX_CREATE",
+										"loop": "not-looping",
+										"volume": "damage.SFX_VOLUME",
+										"stereo-pan": "0",
+										"tag-optional": "damage.SFX_CREATE"
+									}
+								}
+							],
+							"sid": 438469032679513
+						}
+					],
+					"sid": 653443670096784
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "entities",
+							"sid": 300448958542389,
+							"parameters": {
+								"instance-variable": "hp",
+								"comparison": 3,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "entities",
+							"sid": 242044439389126,
+							"parameters": {
+								"instance-variable": "DestroyOnDeath",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 647274986762454,
+							"parameters": {
+								"seconds": "dt*4",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "entities",
+							"sid": 707933251260368
+						}
+					],
+					"sid": 772322626589308
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "entities",
+							"sid": 495956846149098,
+							"parameters": {
+								"instance-variable": "hp",
+								"comparison": 3,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "entities",
+							"sid": 400781279071109,
+							"parameters": {
+								"instance-variable": "DestroyOnDeath",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "entities",
+							"sid": 341736914033438,
+							"parameters": {
+								"animation": "\"death\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 825201620702790
+				}
+			],
+			"sid": 600504685493056
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Effects",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "a group that destroys itself after animation is finished"
+				},
+				{
+					"eventType": "comment",
+					"text": "good for animated vfx"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-any-animation-finished",
+							"objectClass": "effects",
+							"sid": 955668490073589
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "effects",
+							"sid": 185516338368141
+						}
+					],
+					"sid": 244705456474732
+				}
+			],
+			"sid": 599912005233798
 		}
 	],
 	"sid": 323462168211922

@@ -1,0 +1,20 @@
+{
+	"name": "effects",
+	"plugin-id": "Sprite",
+	"sid": 875657807124629,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "alphaclamp2",
+			"name": "AlphaClamp2"
+		},
+		{
+			"effectId": "setcolor",
+			"name": "SetColor"
+		}
+	],
+	"members": [
+		"sprite_particle_dash"
+	]
+}

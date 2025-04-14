@@ -1,0 +1,105 @@
+{
+	"name": "damage",
+	"plugin-id": "Sprite",
+	"sid": 923581448796687,
+	"instanceVariables": [
+		{
+			"name": "numid_num",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 952358740241565
+		},
+		{
+			"name": "dmg",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 229675179996185
+		},
+		{
+			"name": "destroyofscreen",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 707324255299001
+		},
+		{
+			"name": "destroyoflayout",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 916056444687662
+		},
+		{
+			"name": "SFX",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 418383363119289
+		},
+		{
+			"name": "PLAYSFXOFFSCREEN",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 369850576948601
+		},
+		{
+			"name": "SFX_ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 887211648519172
+		},
+		{
+			"name": "SFX_VOLUME",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 191080998022792
+		},
+		{
+			"name": "SFX_CREATE",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 955503722540302
+		},
+		{
+			"name": "X_LOC",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 705694779306306
+		},
+		{
+			"name": "Y_LOC",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 953186595537169
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 530868508842486
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 515490957934069
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "alphaclamp2",
+			"name": "AlphaClamp"
+		}
+	],
+	"members": [
+		"slash5"
+	]
+}

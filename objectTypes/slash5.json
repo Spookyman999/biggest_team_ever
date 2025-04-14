@@ -1,0 +1,68 @@
+{
+	"name": "slash5",
+	"plugin-id": "Sprite",
+	"sid": 617146339164748,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 598765362939005
+		},
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 226850914679861
+		},
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 509343667079308
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 110,
+						"height": 26,
+						"originX": 0.09090909090909091,
+						"originY": 0.5384615384615384,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8977419,
+						"collisionPoly": {
+							"points": [
+								1,
+								0,
+								1,
+								1,
+								0,
+								1,
+								0,
+								0
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 412547135420963,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 48
+			}
+		],
+		"subfolders": []
+	}
+}
