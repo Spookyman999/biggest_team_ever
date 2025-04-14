@@ -4,7 +4,7 @@
 	"name": "Biggest Team Project",
 	"runtime": "c3",
 	"useWorker": "auto",
-	"bundleAddons": false,
+	"bundleAddons": true,
 	"usedAddons": [
 		{
 			"type": "plugin",
@@ -88,7 +88,7 @@
 			"id": "Rex_pushOutSolid",
 			"name": "Push Out Solid",
 			"author": "Rex.Rainbow",
-			"bundled": false,
+			"bundled": true,
 			"version": "1.1.0.0"
 		},
 		{
@@ -121,6 +121,14 @@
 		},
 		{
 			"type": "effect",
+			"id": "Mikal_LinearLight",
+			"name": "LinearLight",
+			"author": "Mikal",
+			"bundled": true,
+			"version": "1.0.0.0"
+		},
+		{
+			"type": "effect",
 			"id": "alphaclamp2",
 			"name": "Alpha clamp",
 			"author": "Scirra",
@@ -148,7 +156,9 @@
 			"bg",
 			"camera",
 			"camera_lock",
-			"Mouse"
+			"Mouse",
+			"linearlight_block",
+			"gradient2"
 		],
 		"subfolders": []
 	},
