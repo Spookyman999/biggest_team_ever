@@ -22,15 +22,6 @@
 					],
 					"actions": [
 						{
-							"id": "simulate-control",
-							"objectClass": "player",
-							"sid": 790035737167769,
-							"behaviorType": "Platform",
-							"parameters": {
-								"control": "right"
-							}
-						},
-						{
 							"id": "set-instvar-value",
 							"objectClass": "player",
 							"sid": 276537710375661,
@@ -45,6 +36,15 @@
 							"sid": 760180715064251,
 							"parameters": {
 								"state": "not-mirrored"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "player",
+							"sid": 173074625432621,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"value": "1"
 							}
 						}
 					],
@@ -64,15 +64,6 @@
 					],
 					"actions": [
 						{
-							"id": "simulate-control",
-							"objectClass": "player",
-							"sid": 197772096249083,
-							"behaviorType": "Platform",
-							"parameters": {
-								"control": "left"
-							}
-						},
-						{
 							"id": "set-instvar-value",
 							"objectClass": "player",
 							"sid": 479508122613868,
@@ -88,9 +79,43 @@
 							"parameters": {
 								"state": "mirrored"
 							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "player",
+							"sid": 427166258715439,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"value": "1"
+							}
 						}
 					],
 					"sid": 939478337639449
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 913634426484470,
+							"parameters": {
+								"key": 87
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 312930458408231,
+							"parameters": {
+								"variable": "height_player",
+								"value": "dt*5"
+							}
+						}
+					],
+					"sid": 857829420446446
 				},
 				{
 					"eventType": "block",
@@ -155,6 +180,15 @@
 								"image-point": "0",
 								"create-hierarchy": false,
 								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 948160230237098,
+							"parameters": {
+								"variable": "height_player",
+								"value": "-dt*5"
 							}
 						}
 					],
@@ -785,6 +819,340 @@
 				}
 			],
 			"sid": 599912005233798
+		},
+		{
+			"eventType": "variable",
+			"name": "mouseMode",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 342385810254435
+		},
+		{
+			"eventType": "variable",
+			"name": "height_player",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 628046465416980
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 897476456719418
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position-to-another-object",
+					"objectClass": "player_visual",
+					"sid": 243450410856571,
+					"parameters": {
+						"object": "player",
+						"image-point-optional": "0"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player",
+					"sid": 474468924148321,
+					"parameters": {
+						"instance-variable": "angle_vector",
+						"value": "Self.angle_vector*dt*clamp(height_player/2,0,10)+Self.angle_vector"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player",
+					"sid": 477921900425238,
+					"parameters": {
+						"instance-variable": "angle_vector",
+						"value": "clamp(Self.angle_vector,-90,90)"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "player_visual",
+					"sid": 384667504016550,
+					"parameters": {
+						"angle": "player.angle_vector"
+					}
+				},
+				{
+					"id": "set-height",
+					"objectClass": "player_visual",
+					"sid": 308120644916944,
+					"parameters": {
+						"height": "Self.ImageHeight*height_player"
+					}
+				}
+			],
+			"sid": 910221343842183
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-on-floor",
+					"objectClass": "player",
+					"sid": 939920004274853,
+					"behaviorType": "Platform",
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 295669733256080
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-on-floor",
+					"objectClass": "player",
+					"sid": 527713938768745,
+					"behaviorType": "Platform"
+				}
+			],
+			"actions": [
+				{
+					"id": "set-vector-x",
+					"objectClass": "player",
+					"sid": 384395115630373,
+					"behaviorType": "Platform",
+					"parameters": {
+						"vector-x": "lerp(Self.Platform.VectorX,Self.angle_vector*10,dt*18)"
+					}
+				}
+			],
+			"sid": 216348875835526
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 568991973387869,
+					"parameters": {
+						"variable": "mouseMode"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 878811656681243,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 480277922618216,
+							"parameters": {
+								"object": "camera_lock"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "camera_lock",
+							"sid": 713760014473186,
+							"parameters": {
+								"instance-variable": "lock"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "camera",
+							"sid": 365465462940835,
+							"parameters": {
+								"x": "lerp(Self.X,lerp(player.X,camera_lock.X,1),dt*5)",
+								"y": "lerp(Self.y,lerp(player.Y,camera_lock.Y,1),dt*5)"
+							}
+						}
+					],
+					"sid": 726723778344044
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 626510234374818,
+							"parameters": {
+								"object": "camera_lock"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "camera_lock",
+							"sid": 995769842153537,
+							"parameters": {
+								"instance-variable": "lock"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "camera",
+							"sid": 818606256283261,
+							"parameters": {
+								"x": "lerp(Self.X,clamp(lerp(player.X,Mouse.X,0.35),camera_lock.ImagePointX(1)+320,camera_lock.ImagePointX(2)-320),dt*9)",
+								"y": "lerp(Self.y,clamp(lerp(player.y,Mouse.y,0.35),camera_lock.ImagePointY(1)+180,camera_lock.ImagePointY(2)-180),dt*9)"
+							}
+						}
+					],
+					"sid": 222767365300505
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 139121238612749,
+							"parameters": {
+								"object": "camera_lock"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "camera",
+							"sid": 807560289276619,
+							"parameters": {
+								"x": "lerp(Self.X,lerp(player.X,Mouse.X,0.35),dt*19)",
+								"y": "lerp(Self.y,lerp(player.y,Mouse.y,0.35),dt*19)"
+							}
+						}
+					],
+					"sid": 978701275965520
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 537705928043653,
+					"parameters": {
+						"variable": "mouseMode"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 289494452401204,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 487824185949470,
+							"parameters": {
+								"object": "camera_lock"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "camera_lock",
+							"sid": 129217215002660,
+							"parameters": {
+								"instance-variable": "lock"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "camera",
+							"sid": 719865464862147,
+							"parameters": {
+								"x": "lerp(Self.X,lerp(player.X,camera_lock.X,1),dt*2)",
+								"y": "lerp(Self.y,lerp(player.Y,camera_lock.Y,1),dt*2)"
+							}
+						}
+					],
+					"sid": 384615429593097
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 493175600945624,
+							"parameters": {
+								"object": "camera_lock"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "camera_lock",
+							"sid": 860794832922854,
+							"parameters": {
+								"instance-variable": "lock"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "camera",
+							"sid": 477019259081096,
+							"parameters": {
+								"x": "lerp(Self.X,clamp(player.X+player.Platform.VectorX/4.5+cos(player.bullet5.AngleOfMotion)*player.Bullet5.Speed/8,camera_lock.ImagePointX(1)+320,camera_lock.ImagePointX(2)-320),dt*8)",
+								"y": "lerp(Self.y,clamp(player.Y,camera_lock.ImagePointY(1)+180,camera_lock.ImagePointY(2)-180),dt*9)"
+							}
+						}
+					],
+					"sid": 490411447193633
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 851280954232333,
+							"parameters": {
+								"object": "camera_lock"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "camera",
+							"sid": 553395819886554,
+							"parameters": {
+								"x": "lerp(Self.X,player.X+player.Platform.VectorX/4.5+cos(player.bullet5.AngleOfMotion)*player.Bullet5.Speed/8,dt*8)",
+								"y": "lerp(Self.y,player.Y,dt*9)"
+							}
+						}
+					],
+					"sid": 693879819626164
+				}
+			]
 		}
 	],
 	"sid": 323462168211922

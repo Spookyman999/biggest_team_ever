@@ -32,6 +32,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 395296324269637
+		},
+		{
+			"name": "angle_vector",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 311009898698517
 		}
 	],
 	"behaviorTypes": [
@@ -54,6 +61,11 @@
 			"behaviorId": "Rex_pushOutSolid",
 			"name": "PushOutSolid",
 			"sid": 837771572135202
+		},
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet5",
+			"sid": 691749283591845
 		}
 	],
 	"effectTypes": [],
@@ -70,7 +82,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 7613432,
+						"imageSpriteId": 4775597,
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
