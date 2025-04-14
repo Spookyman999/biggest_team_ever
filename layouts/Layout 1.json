@@ -2,10 +2,94 @@
 	"name": "Layout 1",
 	"layers": [
 		{
+			"name": "bg",
+			"overriden": 0,
+			"subLayers": [],
+			"instances": [],
+			"sid": 973192490181927,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"isInitiallyInteractive": true,
+			"isHTMLElementsLayer": false,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				0.3686274509803922,
+				0.3686274509803922,
+				0.3686274509803922,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
+		},
+		{
 			"name": "Layer 0",
 			"overriden": 0,
 			"subLayers": [],
 			"instances": [
+				{
+					"type": "bg",
+					"properties": {
+						"initially-visible": true,
+						"origin": "top-left",
+						"wrap-horizontal": "repeat",
+						"wrap-vertical": "repeat",
+						"image-offset-x": 0,
+						"image-offset-y": 0,
+						"image-scale-x": 1,
+						"image-scale-y": 1,
+						"image-angle": 0,
+						"enable-tile-randomization": false,
+						"x-random": 1,
+						"y-random": 1,
+						"angle-random": 1,
+						"blend-margin-x": 0.1,
+						"blend-margin-y": 0.1
+					},
+					"uid": 7,
+					"sid": 559812321913726,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 559812321913726,
+						"expanded": true,
+						"folderName": "",
+						"indexInFolder": -1,
+						"folderNestingLevel": -1
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": -16,
+						"y": 0,
+						"width": 704,
+						"height": 360,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
 				{
 					"type": "player_visual",
 					"properties": {
@@ -64,8 +148,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 284.9864501953125,
-						"y": 259.140869140625,
+						"x": 336,
+						"y": 144,
 						"width": 16,
 						"height": 24,
 						"originX": 0.5185185185185185,
@@ -115,9 +199,9 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": -9.954233707719595,
-						"y": 276.0439517519438,
-						"width": 650.1551434017804,
+						"x": -16,
+						"y": 272,
+						"width": 848,
 						"height": 352,
 						"originX": 0,
 						"originY": 0,
@@ -258,7 +342,7 @@
 				0.3686274509803922,
 				1
 			],
-			"isTransparent": false,
+			"isTransparent": true,
 			"parallaxX": 1,
 			"parallaxY": 1,
 			"scaleRate": 1,
