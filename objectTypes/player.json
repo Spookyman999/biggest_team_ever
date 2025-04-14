@@ -1,20 +1,59 @@
 {
 	"name": "player",
 	"plugin-id": "Sprite",
-	"sid": 941142529839040,
+	"sid": 857760007917288,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
-	"behaviorTypes": [
+	"instanceVariables": [
 		{
-			"behaviorId": "EightDir",
-			"name": "8Direction",
-			"sid": 389057449928699
+			"name": "flip_state",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 184123853520650
 		},
+		{
+			"name": "Grace_time",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 916342203991402
+		},
+		{
+			"name": "coyote_time",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 682720239633694
+		},
+		{
+			"name": "throw_availability",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 395296324269637
+		}
+	],
+	"behaviorTypes": [
 		{
 			"behaviorId": "Tween",
 			"name": "Tween",
-			"sid": 984220693021840
+			"sid": 367493373302443
+		},
+		{
+			"behaviorId": "Platform",
+			"name": "Platform",
+			"sid": 682928059065874
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 245684598098943
+		},
+		{
+			"behaviorId": "Rex_pushOutSolid",
+			"name": "PushOutSolid",
+			"sid": 837771572135202
 		}
 	],
 	"effectTypes": [],
@@ -23,27 +62,44 @@
 			{
 				"frames": [
 					{
-						"width": 16,
+						"width": 14,
 						"height": 24,
-						"originX": 0.5185185185185185,
-						"originY": 0.45454545454545453,
+						"originX": 0.5,
+						"originY": 1,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 7522287,
+						"imageSpriteId": 7613432,
 						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Image Point 1",
+								"x": 0.5,
+								"y": 0.5
+							},
+							{
+								"name": "Image Point 2",
+								"x": 0.7777777777777778,
+								"y": 0.5
+							},
+							{
+								"name": "Image Point 3",
+								"x": 0.2777777777777778,
+								"y": 0.5
+							}
+						],
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 623330956932157,
+				"sid": 224924765252732,
 				"name": "Animation 1",
-				"isLooping": true,
+				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 12
+				"speed": 5
 			}
 		],
 		"subfolders": []

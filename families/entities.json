@@ -25,13 +25,6 @@
 			"sid": 105839463551270
 		},
 		{
-			"name": "boss",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 524557891610503
-		},
-		{
 			"name": "mirror_state",
 			"type": "number",
 			"desc": "",
@@ -39,32 +32,11 @@
 			"sid": 395724798766066
 		},
 		{
-			"name": "phase",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 746835161947698
-		},
-		{
 			"name": "flip_angle",
 			"type": "number",
 			"desc": "",
 			"show": true,
 			"sid": 886534456852037
-		},
-		{
-			"name": "destroy",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 499385092129997
-		},
-		{
-			"name": "boss_str",
-			"type": "string",
-			"desc": "",
-			"show": true,
-			"sid": 697065755206949
 		}
 	],
 	"behaviorTypes": [
@@ -72,11 +44,6 @@
 			"behaviorId": "Flash",
 			"name": "Flash",
 			"sid": 458119450371141
-		},
-		{
-			"behaviorId": "Fade",
-			"name": "Fade",
-			"sid": 151792157757070
 		},
 		{
 			"behaviorId": "Timer",
@@ -87,11 +54,6 @@
 			"behaviorId": "Bullet",
 			"name": "knockback",
 			"sid": 769848384698508
-		},
-		{
-			"behaviorId": "Platform",
-			"name": "Platform2",
-			"sid": 958209481797452
 		}
 	],
 	"effectTypes": [

@@ -7,156 +7,6 @@
 			"subLayers": [],
 			"instances": [
 				{
-					"type": "player",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 2,
-					"sid": 851918275825744,
-					"tags": "",
-					"instanceVariables": {
-						"numid": 0,
-						"hp": 0,
-						"DestroyOnDeath": 0,
-						"boss": 0,
-						"mirror_state": 0,
-						"phase": 0,
-						"flip_angle": 0,
-						"destroy": 0,
-						"boss_str": ""
-					},
-					"behaviors": {
-						"Flash": {
-							"properties": {}
-						},
-						"Fade": {
-							"properties": {
-								"fade-in-time": 0,
-								"wait-time": 0,
-								"fade-out-time": 1,
-								"destroy": true,
-								"enabled": true,
-								"live-preview": false
-							}
-						},
-						"Timer2": {
-							"properties": {}
-						},
-						"knockback": {
-							"properties": {
-								"speed": 400,
-								"acceleration": 0,
-								"gravity": 0,
-								"bounce-off-solids": false,
-								"set-angle": true,
-								"step": false,
-								"enabled": true
-							}
-						},
-						"Platform2": {
-							"properties": {
-								"max-speed": 330,
-								"acceleration": 1500,
-								"deceleration": 1500,
-								"jump-strength": 650,
-								"gravity": 1500,
-								"max-fall-speed": 1000,
-								"double-jump": false,
-								"jump-sustain": 0,
-								"default-controls": true,
-								"enabled": true
-							}
-						},
-						"8Direction": {
-							"properties": {
-								"max-speed": 300,
-								"acceleration": 1999,
-								"deceleration": 1999,
-								"directions": "dir-8",
-								"set-angle": "no",
-								"allow-sliding": false,
-								"default-controls": true,
-								"enabled": true
-							}
-						},
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"effects": {
-						"SetColor": {
-							"isEnabled": true,
-							"parameters": {
-								"color": [
-									1,
-									0,
-									0,
-									1
-								]
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 2,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"instanceFolderItem": {
-						"sid": 851918275825744,
-						"expanded": true,
-						"folderName": "",
-						"indexInFolder": -1,
-						"folderNestingLevel": -1
-					},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 151.5016706742323,
-						"y": 198.900072846584,
-						"width": 16,
-						"height": 24,
-						"originX": 0.5185185185185185,
-						"originY": 0.45454545454545453,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
 					"type": "player_visual",
 					"properties": {
 						"initially-visible": true,
@@ -220,6 +70,166 @@
 						"height": 24,
 						"originX": 0.5185185185185185,
 						"originY": 0.45454545454545453,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "solidTest",
+					"properties": {
+						"left-margin": 16,
+						"right-margin": 16,
+						"top-margin": 16,
+						"bottom-margin": 16,
+						"edges": "tile",
+						"fill": "tile",
+						"initially-visible": true,
+						"origin": "top-left",
+						"seams": "overlap"
+					},
+					"uid": 6,
+					"sid": 701947800689411,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"tags": ""
+							}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 701947800689411,
+						"expanded": true,
+						"folderName": "",
+						"indexInFolder": -1,
+						"folderNestingLevel": -1
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": -9.954233707719595,
+						"y": 276.0439517519438,
+						"width": 650.1551434017804,
+						"height": 352,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "player",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 2,
+					"sid": 377812094215110,
+					"tags": "",
+					"instanceVariables": {
+						"numid": 0,
+						"hp": 15,
+						"DestroyOnDeath": 0,
+						"mirror_state": 0,
+						"flip_angle": 0,
+						"flip_state": 0,
+						"Grace_time": 0,
+						"coyote_time": 0,
+						"throw_availability": 1
+					},
+					"behaviors": {
+						"Flash": {
+							"properties": {}
+						},
+						"Timer2": {
+							"properties": {}
+						},
+						"knockback": {
+							"properties": {
+								"speed": 400,
+								"acceleration": -1999,
+								"gravity": 0,
+								"bounce-off-solids": false,
+								"set-angle": true,
+								"step": false,
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Platform": {
+							"properties": {
+								"max-speed": 250,
+								"acceleration": 3999,
+								"deceleration": 3999,
+								"jump-strength": 600,
+								"gravity": 2000,
+								"max-fall-speed": 750,
+								"double-jump": false,
+								"jump-sustain": 0,
+								"default-controls": false,
+								"enabled": true
+							}
+						},
+						"Timer": {
+							"properties": {}
+						},
+						"PushOutSolid": {
+							"properties": {
+								"activated": "yes",
+								"obstacles": "solids"
+							}
+						}
+					},
+					"effects": {
+						"SetColor": {
+							"isEnabled": false,
+							"parameters": {
+								"color": [
+									1,
+									0,
+									0,
+									1
+								]
+							}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 377812094215110,
+						"expanded": true,
+						"folderName": "",
+						"indexInFolder": -1,
+						"folderNestingLevel": -1
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 80.66903686523438,
+						"y": 197.807861328125,
+						"width": 14,
+						"height": 24,
+						"originX": 0.5,
+						"originY": 1,
 						"color": [
 							1,
 							1,

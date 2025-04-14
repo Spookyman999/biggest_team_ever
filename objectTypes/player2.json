@@ -1,0 +1,59 @@
+{
+	"name": "player2",
+	"plugin-id": "Sprite",
+	"sid": 693365722605609,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "flip_state",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 780958434564496
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 899561469190149
+		},
+		{
+			"behaviorId": "Platform",
+			"name": "Platform",
+			"sid": 847206903374476
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 16,
+						"height": 24,
+						"originX": 0.5185185185185185,
+						"originY": 0.45454545454545453,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3127321,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 278076679360253,
+				"name": "Animation 1",
+				"isLooping": true,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 12
+			}
+		],
+		"subfolders": []
+	}
+}
