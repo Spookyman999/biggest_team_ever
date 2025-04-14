@@ -14,90 +14,6 @@
 						{
 							"id": "key-is-down",
 							"objectClass": "Keyboard",
-							"sid": 273726868646513,
-							"parameters": {
-								"key": 68
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "player",
-							"sid": 276537710375661,
-							"parameters": {
-								"instance-variable": "flip_state",
-								"value": "0"
-							}
-						},
-						{
-							"id": "set-mirrored",
-							"objectClass": "player",
-							"sid": 760180715064251,
-							"parameters": {
-								"state": "not-mirrored"
-							}
-						},
-						{
-							"id": "add-to-instvar",
-							"objectClass": "player",
-							"sid": 173074625432621,
-							"parameters": {
-								"instance-variable": "angle_vector",
-								"value": "1"
-							}
-						}
-					],
-					"sid": 224069691979645
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 851711481868151,
-							"parameters": {
-								"key": 65
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "player",
-							"sid": 479508122613868,
-							"parameters": {
-								"instance-variable": "flip_state",
-								"value": "180"
-							}
-						},
-						{
-							"id": "set-mirrored",
-							"objectClass": "player",
-							"sid": 730648963541367,
-							"parameters": {
-								"state": "mirrored"
-							}
-						},
-						{
-							"id": "subtract-from-instvar",
-							"objectClass": "player",
-							"sid": 427166258715439,
-							"parameters": {
-								"instance-variable": "angle_vector",
-								"value": "1"
-							}
-						}
-					],
-					"sid": 939478337639449
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
 							"sid": 913634426484470,
 							"parameters": {
 								"key": 87
@@ -860,32 +776,6 @@
 					}
 				},
 				{
-					"id": "set-instvar-value",
-					"objectClass": "player",
-					"sid": 474468924148321,
-					"parameters": {
-						"instance-variable": "angle_vector",
-						"value": "Self.angle_vector*dt*clamp(height_player/2,0,10)+Self.angle_vector"
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "player",
-					"sid": 477921900425238,
-					"parameters": {
-						"instance-variable": "angle_vector",
-						"value": "clamp(Self.angle_vector,-90,90)"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "player_visual",
-					"sid": 384667504016550,
-					"parameters": {
-						"angle": "player.angle_vector"
-					}
-				},
-				{
 					"id": "set-height",
 					"objectClass": "player_visual",
 					"sid": 308120644916944,
@@ -922,6 +812,15 @@
 			],
 			"actions": [
 				{
+					"id": "set-instvar-value",
+					"objectClass": "player",
+					"sid": 489834046289754,
+					"parameters": {
+						"instance-variable": "angle_vector",
+						"value": "Self.angle_vector*dt*clamp(height_player/2,0,10)*2+Self.angle_vector"
+					}
+				},
+				{
 					"id": "set-vector-x",
 					"objectClass": "player",
 					"sid": 384395115630373,
@@ -929,9 +828,132 @@
 					"parameters": {
 						"vector-x": "lerp(Self.Platform.VectorX,Self.angle_vector*10,dt*18)"
 					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player",
+					"sid": 728663160312951,
+					"parameters": {
+						"instance-variable": "angle_vector",
+						"value": "clamp(Self.angle_vector,-90,90)"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "player_visual",
+					"sid": 216712921818473,
+					"parameters": {
+						"angle": "player.angle_vector"
+					}
 				}
 			],
-			"sid": 216348875835526
+			"sid": 216348875835526,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 638328266794891,
+							"parameters": {
+								"key": 68
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "player",
+							"sid": 651904015448783,
+							"parameters": {
+								"instance-variable": "flip_state",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "player",
+							"sid": 618827254541310,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "player",
+							"sid": 297599580715032,
+							"disabled": true,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"value": "1*abs(Self.angle_vector)*dt*5+1"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "player",
+							"sid": 501688686507261,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 255922394909051
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 613683769659059,
+							"parameters": {
+								"key": 65
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "player",
+							"sid": 703260787016444,
+							"parameters": {
+								"instance-variable": "flip_state",
+								"value": "180"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "player",
+							"sid": 898540954549694,
+							"parameters": {
+								"state": "mirrored"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "player",
+							"sid": 797333837265852,
+							"disabled": true,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"value": "-1*abs(Self.angle_vector)*dt*5-1"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "player",
+							"sid": 265873240903160,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"value": "-1"
+							}
+						}
+					],
+					"sid": 304370271418801
+				}
+			]
 		},
 		{
 			"eventType": "block",
