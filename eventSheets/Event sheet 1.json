@@ -18,6 +18,14 @@
 							"parameters": {
 								"key": 87
 							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 983893317389433,
+							"parameters": {
+								"key": 38
+							}
 						}
 					],
 					"actions": [
@@ -31,7 +39,8 @@
 							}
 						}
 					],
-					"sid": 857829420446446
+					"sid": 857829420446446,
+					"isOrBlock": true
 				},
 				{
 					"eventType": "block",
@@ -68,11 +77,50 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "on-key-released",
+							"objectClass": "Keyboard",
+							"sid": 442346930430093,
+							"parameters": {
+								"key": 90
+							}
+						},
+						{
+							"id": "is-jumping",
+							"objectClass": "player",
+							"sid": 278845185070873,
+							"behaviorType": "Platform"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-vector-y",
+							"objectClass": "player",
+							"sid": 949849623231964,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-y": "Self.Platform.VectorY/2"
+							}
+						}
+					],
+					"sid": 173644223089053
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "key-is-down",
 							"objectClass": "Keyboard",
 							"sid": 297624969324978,
 							"parameters": {
 								"key": 83
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 167909005603008,
+							"parameters": {
+								"key": 40
 							}
 						}
 					],
@@ -87,7 +135,8 @@
 							}
 						}
 					],
-					"sid": 829313251863784
+					"sid": 829313251863784,
+					"isOrBlock": true
 				},
 				{
 					"eventType": "block",
@@ -98,6 +147,14 @@
 							"sid": 762693192611603,
 							"parameters": {
 								"key": 32
+							}
+						},
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 561426389238535,
+							"parameters": {
+								"key": 90
 							}
 						}
 					],
@@ -209,7 +266,8 @@
 								}
 							]
 						}
-					]
+					],
+					"isOrBlock": true
 				},
 				{
 					"eventType": "block",
@@ -250,6 +308,14 @@
 											"parameters": {
 												"key": 32
 											}
+										},
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 550204947583109,
+											"parameters": {
+												"key": 90
+											}
 										}
 									],
 									"actions": [
@@ -263,7 +329,8 @@
 											}
 										}
 									],
-									"sid": 851577065209005
+									"sid": 851577065209005,
+									"isOrBlock": true
 								},
 								{
 									"eventType": "block",
@@ -274,6 +341,15 @@
 											"sid": 254087478878678,
 											"parameters": {
 												"key": 32
+											},
+											"isInverted": true
+										},
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 726837662103782,
+											"parameters": {
+												"key": 90
 											},
 											"isInverted": true
 										}
@@ -1037,6 +1113,14 @@
 							"parameters": {
 								"key": 68
 							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 155628210171072,
+							"parameters": {
+								"key": 39
+							}
 						}
 					],
 					"actions": [
@@ -1077,7 +1161,8 @@
 							}
 						}
 					],
-					"sid": 255922394909051
+					"sid": 255922394909051,
+					"isOrBlock": true
 				},
 				{
 					"eventType": "block",
@@ -1088,6 +1173,14 @@
 							"sid": 613683769659059,
 							"parameters": {
 								"key": 65
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 688946997945048,
+							"parameters": {
+								"key": 37
 							}
 						}
 					],
@@ -1129,7 +1222,8 @@
 							}
 						}
 					],
-					"sid": 304370271418801
+					"sid": 304370271418801,
+					"isOrBlock": true
 				}
 			]
 		},
@@ -1353,6 +1447,30 @@
 					"sid": 693879819626164
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 680169100264973,
+					"parameters": {
+						"key": 77
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "toggle-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 176251334234792,
+					"parameters": {
+						"variable": "mouseMode"
+					}
+				}
+			],
+			"sid": 209454340750206
 		}
 	],
 	"sid": 323462168211922

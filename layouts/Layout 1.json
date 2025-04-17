@@ -806,7 +806,7 @@
 						},
 						"Bullet5": {
 							"properties": {
-								"speed": 400,
+								"speed": 0,
 								"acceleration": 0,
 								"gravity": 0,
 								"bounce-off-solids": false,
@@ -929,8 +929,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": -416,
-						"y": 64,
+						"x": -960,
+						"y": 32,
 						"width": 640,
 						"height": 360,
 						"originX": 0.5,
