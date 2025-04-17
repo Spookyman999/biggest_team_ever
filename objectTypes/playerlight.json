@@ -1,18 +1,10 @@
 {
-	"name": "player2",
+	"name": "playerlight",
 	"plugin-id": "Sprite",
-	"sid": 693365722605609,
+	"sid": 108427290224436,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [
-		{
-			"name": "flip_state",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 780958434564496
-		}
-	],
+	"instanceVariables": [],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
@@ -20,34 +12,39 @@
 			{
 				"frames": [
 					{
-						"width": 4,
-						"height": 24,
-						"originX": 0.6666666666666666,
-						"originY": 1,
+						"width": 900,
+						"height": 900,
+						"originX": 0.5011111111111111,
+						"originY": 0.5166666666666667,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 385958,
+						"imageSpriteId": 6639459,
+						"collisionPoly": {
+							"points": [
+								0,
+								0,
+								0.8007766990291262,
+								0,
+								0.8007766990291262,
+								1,
+								0,
+								1
+							]
+						},
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "Image Point 1",
-								"x": 0.5,
-								"y": 0
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 278076679360253,
+				"sid": 320644645935643,
 				"name": "Animation 1",
-				"isLooping": true,
+				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 12
+				"speed": 5
 			}
 		],
 		"subfolders": []

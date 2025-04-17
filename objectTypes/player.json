@@ -82,7 +82,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 4775597,
+						"imageSpriteId": 2218107,
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
@@ -92,8 +92,8 @@
 							},
 							{
 								"name": "Image Point 2",
-								"x": 0.7777777777777778,
-								"y": 0.5
+								"x": 0.5,
+								"y": 0
 							},
 							{
 								"name": "Image Point 3",

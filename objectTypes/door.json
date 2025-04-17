@@ -1,53 +1,52 @@
 {
-	"name": "player2",
+	"name": "door",
 	"plugin-id": "Sprite",
-	"sid": 693365722605609,
+	"sid": 166772549894408,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
-			"name": "flip_state",
+			"name": "id",
 			"type": "number",
 			"desc": "",
 			"show": true,
-			"sid": 780958434564496
+			"sid": 884966881593049
 		}
 	],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 465334884263434
+		}
+	],
 	"effectTypes": [],
 	"animations": {
 		"items": [
 			{
 				"frames": [
 					{
-						"width": 4,
-						"height": 24,
-						"originX": 0.6666666666666666,
-						"originY": 1,
+						"width": 32,
+						"height": 32,
+						"originX": 0.5,
+						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 385958,
+						"imageSpriteId": 6271070,
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "Image Point 1",
-								"x": 0.5,
-								"y": 0
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 278076679360253,
+				"sid": 651377926268162,
 				"name": "Animation 1",
-				"isLooping": true,
+				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 12
+				"speed": 5
 			}
 		],
 		"subfolders": []

@@ -1,15 +1,15 @@
 {
-	"name": "player_visual",
+	"name": "wheel",
 	"plugin-id": "Sprite",
-	"sid": 921074619473484,
+	"sid": 339571002549183,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
 	"behaviorTypes": [
 		{
-			"behaviorId": "Tween",
-			"name": "Tween",
-			"sid": 888581567650234
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 718076857494446
 		}
 	],
 	"effectTypes": [],
@@ -19,33 +19,26 @@
 				"frames": [
 					{
 						"width": 16,
-						"height": 24,
+						"height": 16,
 						"originX": 0.5,
-						"originY": 0,
+						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 2515126,
+						"imageSpriteId": 7757302,
 						"useCollisionPoly": true,
-						"imagePoints": [
-							{
-								"name": "Image Point 1",
-								"x": 0.5,
-								"y": 0.5
-							}
-						],
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 659732681909687,
+				"sid": 525186287919768,
 				"name": "Animation 1",
-				"isLooping": true,
+				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 12
+				"speed": 5
 			}
 		],
 		"subfolders": []

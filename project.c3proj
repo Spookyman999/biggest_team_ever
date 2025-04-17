@@ -49,6 +49,13 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "shadowlight",
+			"name": "Shadow light",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "Bullet",
 			"name": "Bullet",
@@ -93,6 +100,13 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Rotate",
+			"name": "Rotate",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Timer",
 			"name": "Timer",
 			"author": "Scirra",
@@ -109,6 +123,13 @@
 			"type": "behavior",
 			"id": "scrollto",
 			"name": "Scroll To",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "shadowcaster",
+			"name": "Shadow caster",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -140,6 +161,14 @@
 			"name": "Set color",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "skymen_BetterOutline",
+			"name": "Better Outline",
+			"author": "skymen",
+			"bundled": true,
+			"version": "2.0.0.3"
 		}
 	],
 	"uniqueId": "6gi3onr77l7",
@@ -158,7 +187,15 @@
 			"camera_lock",
 			"Mouse",
 			"linearlight_block",
-			"gradient2"
+			"gradient2",
+			"door",
+			"springs",
+			"button",
+			"wheel",
+			"TiledBackground",
+			"TiledBackground2",
+			"playerlight",
+			"ShadowLight"
 		],
 		"subfolders": []
 	},
