@@ -1,0 +1,62 @@
+{
+	"name": "console_command",
+	"plugin-id": "Sprite",
+	"sid": 125311774356848,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "text",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 756494432036874
+		},
+		{
+			"name": "typerightlength",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 411873609935774
+		},
+		{
+			"name": "fade_delay",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 727242960092266
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 21092,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 666594812454601,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

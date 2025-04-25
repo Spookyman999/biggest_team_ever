@@ -63,6 +63,7 @@
 		}
 	],
 	"members": [
-		"player"
+		"player_visual",
+		"player_visual2"
 	]
 }

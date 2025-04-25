@@ -33,6 +33,11 @@
 								"name": "Image Point 1",
 								"x": 0.5,
 								"y": 0.5
+							},
+							{
+								"name": "Image Point 2",
+								"x": 0.5,
+								"y": 0
 							}
 						],
 						"duration": 1,

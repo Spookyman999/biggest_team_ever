@@ -1,0 +1,23 @@
+{
+	"name": "light_particles",
+	"plugin-id": "Particles",
+	"sid": 198848366203212,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 250,
+		"height": 250,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 6505624,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

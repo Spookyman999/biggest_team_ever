@@ -36,6 +36,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Particles",
+			"name": "Particles",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -43,8 +50,22 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "TiledBg",
 			"name": "Tiled Background",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Tilemap",
+			"name": "Tilemap",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -78,6 +99,20 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Follow",
+			"name": "Follow",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Persist",
+			"name": "Persist",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Pin",
 			"name": "Pin",
 			"author": "Scirra",
@@ -102,6 +137,13 @@
 			"type": "behavior",
 			"id": "Rotate",
 			"name": "Rotate",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -157,6 +199,27 @@
 		},
 		{
 			"type": "effect",
+			"id": "brightness",
+			"name": "Brightness",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "glowhorizontal",
+			"name": "Glow horizontal",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "glowvertical",
+			"name": "Glow vertical",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
 			"id": "setcolor",
 			"name": "Set color",
 			"author": "Scirra",
@@ -195,7 +258,44 @@
 			"TiledBackground",
 			"TiledBackground2",
 			"playerlight",
-			"ShadowLight"
+			"ShadowLight",
+			"higherbound",
+			"anglebound",
+			"landing_particles",
+			"spinning_square_vfx",
+			"city",
+			"bgggg",
+			"solidTest2",
+			"tweenval",
+			"button2",
+			"MUSICPLAYER",
+			"tilemap",
+			"TiledBackground3",
+			"TiledBackground4",
+			"trashbags",
+			"death_robots",
+			"Aruna_0",
+			"dialog",
+			"dialogBox",
+			"dialog_sprite",
+			"fren",
+			"playerlight2",
+			"player3",
+			"wheel2",
+			"sine_obj",
+			"guitar",
+			"objects",
+			"powerlines",
+			"light_particles",
+			"Particles",
+			"INTRO_TEXT",
+			"attack2",
+			"Particles2",
+			"player_visual2",
+			"console_command",
+			"INTRO_TEXT2",
+			"EXPLOSION",
+			"Particles3"
 		],
 		"subfolders": []
 	},
@@ -205,19 +305,26 @@
 		"items": [
 			"entities",
 			"effects",
-			"damage"
+			"damage",
+			"bgg",
+			"face_toward_player",
+			"blocks"
 		],
 		"subfolders": []
 	},
 	"layouts": {
 		"items": [
-			"Layout 1"
+			"title",
+			"level_0",
+			"level_1",
+			"objects"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"Event sheet 1"
+			"Event sheet 1",
+			"Event sheet 2"
 		],
 		"subfolders": []
 	},
@@ -227,11 +334,53 @@
 			"subfolders": []
 		},
 		"sound": {
-			"items": [],
+			"items": [
+				{
+					"name": "Sound_Ideas,_SPACE,_COMPUTER_-_SPACE_SHIP_CONSOLE_-_BEEP,_ELECTRONIC,_SCI_FI_01.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 678182012714937,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "39_Block_03.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 886800713952338,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "13_Ice_explosion_01.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 394130189529096,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"music": {
-			"items": [],
+			"items": [
+				{
+					"name": "Idk ngl.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 702293603652782,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Guitar bot.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 139631591983342,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"video": {
@@ -239,7 +388,40 @@
 			"subfolders": []
 		},
 		"font": {
-			"items": [],
+			"items": [
+				{
+					"name": "monogram.ttf",
+					"type": "application/font-sfnt",
+					"sid": 240507125430820,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "NiseSegaSonic.TTF",
+					"type": "application/font-sfnt",
+					"sid": 676729645837785,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "AGENCYB.TTF",
+					"type": "application/font-sfnt",
+					"sid": 159547912552724,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Aboreto-Regular.ttf",
+					"type": "application/font-sfnt",
+					"sid": 423743687448224,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"icon": {
@@ -371,7 +553,7 @@
 		"zNear": 1,
 		"zFar": 10000,
 		"maxSpriteSheetSize": 2048,
-		"loaderStyle": "splash",
+		"loaderStyle": "percent",
 		"preloadSounds": true,
 		"cordovaiOSScheme": "app",
 		"cordovaAndroidScheme": "https",

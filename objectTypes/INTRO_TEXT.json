@@ -1,0 +1,30 @@
+{
+	"name": "INTRO_TEXT",
+	"plugin-id": "Text",
+	"sid": 608658311137573,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 332060993509396
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 310842533942646
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "glowhorizontal",
+			"name": "GlowHorizontal"
+		},
+		{
+			"effectId": "glowvertical",
+			"name": "GlowVertical"
+		}
+	]
+}

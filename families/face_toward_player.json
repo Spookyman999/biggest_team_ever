@@ -1,0 +1,20 @@
+{
+	"name": "face_toward_player",
+	"plugin-id": "Sprite",
+	"sid": 775437464875884,
+	"instanceVariables": [
+		{
+			"name": "activated",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 222337837801431
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"wheel2",
+		"fren"
+	]
+}

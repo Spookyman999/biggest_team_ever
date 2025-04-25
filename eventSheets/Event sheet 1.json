@@ -2,6 +2,16 @@
 	"name": "Event sheet 1",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "angle_velocity",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 455646029297923
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Player_Input",
@@ -12,35 +22,80 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 913634426484470,
+							"id": "is-overlapping-another-object",
+							"objectClass": "higherbound",
+							"sid": 976140472577765,
 							"parameters": {
-								"key": 87
-							}
+								"object": "blocks"
+							},
+							"isInverted": true
 						},
 						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 983893317389433,
+							"id": "is-overlapping-another-object",
+							"objectClass": "higherbound",
+							"sid": 814861587629678,
 							"parameters": {
-								"key": 38
-							}
-						}
-					],
-					"actions": [
+								"object": "tilemap"
+							},
+							"isInverted": true
+						},
 						{
-							"id": "add-to-eventvar",
-							"objectClass": "System",
-							"sid": 312930458408231,
+							"id": "compare-instance-variable",
+							"objectClass": "player_visual",
+							"sid": 133744484201514,
 							"parameters": {
-								"variable": "height_player",
-								"value": "dt*5"
+								"instance-variable": "hp",
+								"comparison": 4,
+								"value": "0"
 							}
 						}
 					],
-					"sid": 857829420446446,
-					"isOrBlock": true
+					"actions": [],
+					"sid": 814809062733363,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 807769291069016,
+									"parameters": {
+										"key": 87
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 403978002150735,
+									"parameters": {
+										"key": 38
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 938653691988403,
+									"parameters": {
+										"key": 90
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 378285675967238,
+									"parameters": {
+										"variable": "height_player",
+										"value": "dt*5"
+									}
+								}
+							],
+							"sid": 292146032449343,
+							"isOrBlock": true
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -79,9 +134,9 @@
 						{
 							"id": "on-key-released",
 							"objectClass": "Keyboard",
-							"sid": 442346930430093,
+							"sid": 494082300307861,
 							"parameters": {
-								"key": 90
+								"key": 88
 							}
 						},
 						{
@@ -142,6 +197,323 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "on-click",
+							"objectClass": "Mouse",
+							"sid": 555038994927453,
+							"parameters": {
+								"mouse-button": "right",
+								"click-type": "clicked"
+							}
+						},
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 926513118698146,
+							"parameters": {
+								"key": 67
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 313276784219256,
+							"parameters": {
+								"variable": "angle_velocity",
+								"value": "sign(player.angle_vector)*20"
+							}
+						}
+					],
+					"sid": 335379404239799,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-timer-running",
+							"objectClass": "player",
+							"sid": 806402612511125,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"uneffected_by_angle_velocity\""
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-on-floor",
+							"objectClass": "player",
+							"sid": 465282737060997,
+							"behaviorType": "Platform"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "player",
+							"sid": 282628509808255,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"value": "Self.angle_vector+angle_velocity"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 276644103375489,
+							"parameters": {
+								"variable": "angle_velocity",
+								"value": "angle_velocity*0.8"
+							}
+						}
+					],
+					"sid": 315866990193674
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-timer-running",
+							"objectClass": "player",
+							"sid": 330885314738813,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"stop_player_velocity_x\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-vector-x",
+							"objectClass": "player",
+							"sid": 347104585490214,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-x": "0"
+							}
+						}
+					],
+					"sid": 858538905317443,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 703027182850848,
+							"parameters": {
+								"first-value": "abs(angle_velocity)",
+								"comparison": 4,
+								"second-value": "2"
+							}
+						},
+						{
+							"id": "is-timer-running",
+							"objectClass": "player",
+							"sid": 633130868485788,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"uneffected_by_collisions\""
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 463521603468036,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "player_visual",
+									"sid": 149258136631405,
+									"parameters": {
+										"object": "entities"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "entities",
+									"sid": 954723753470112,
+									"parameters": {
+										"instance-variable": "numid",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 624266772381761,
+									"parameters": {
+										"audio-file": "13_Ice_explosion_01",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "player",
+									"sid": 471357318942605,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "0.1",
+										"type": "once",
+										"tag": "\"uneffected_by_angle_velocity\""
+									}
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "player",
+									"sid": 517635683574593,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "0.3",
+										"type": "once",
+										"tag": "\"uneffected_by_collisions\""
+									}
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "player",
+									"sid": 816385369178964,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "0.1",
+										"type": "once",
+										"tag": "\"stop_player_velocity_x\""
+									}
+								},
+								{
+									"id": "spawn-another-object",
+									"objectClass": "player_visual",
+									"sid": 477059971650682,
+									"parameters": {
+										"object": "Particles2",
+										"layer": "\"effects\"",
+										"image-point": "1",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "shake",
+									"objectClass": "camera",
+									"sid": 756225937822767,
+									"behaviorType": "ScrollTo",
+									"parameters": {
+										"magnitude": "5",
+										"duration": "0.4",
+										"mode": "reducing-magnitude"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 738761283036208,
+									"parameters": {
+										"variable": "camscale",
+										"value": "1.2"
+									}
+								},
+								{
+									"id": "set-time-scale",
+									"objectClass": "System",
+									"sid": 365006280919247,
+									"parameters": {
+										"time-scale": "0"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 206164766436358,
+									"parameters": {
+										"seconds": "0.1",
+										"use-timescale": false
+									}
+								},
+								{
+									"id": "set-time-scale",
+									"objectClass": "System",
+									"sid": 230467604956976,
+									"parameters": {
+										"time-scale": "1"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 166096202433546,
+									"parameters": {
+										"variable": "angle_velocity",
+										"value": "sign(angle_velocity)*-15"
+									}
+								},
+								{
+									"id": "set-effect-enabled",
+									"objectClass": "entities",
+									"sid": 253086717346165,
+									"parameters": {
+										"mode": "enable",
+										"effect": "\"SetColor\""
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 255396755523697,
+									"parameters": {
+										"seconds": "0.25",
+										"use-timescale": false
+									}
+								},
+								{
+									"id": "set-effect-enabled",
+									"objectClass": "entities",
+									"sid": 548899455751984,
+									"parameters": {
+										"mode": "disable",
+										"effect": "\"SetColor\""
+									}
+								},
+								{
+									"id": "flash",
+									"objectClass": "entities",
+									"sid": 404001561379136,
+									"behaviorType": "Flash",
+									"parameters": {
+										"on-time": "0.05",
+										"off-time": "0.05",
+										"duration": "0.1"
+									}
+								},
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "entities",
+									"sid": 822665212537891,
+									"parameters": {
+										"instance-variable": "hp",
+										"value": "5"
+									}
+								}
+							],
+							"sid": 187989206113868
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "on-key-pressed",
 							"objectClass": "Keyboard",
 							"sid": 762693192611603,
@@ -152,9 +524,9 @@
 						{
 							"id": "on-key-pressed",
 							"objectClass": "Keyboard",
-							"sid": 561426389238535,
+							"sid": 330920408534255,
 							"parameters": {
-								"key": 90
+								"key": 88
 							}
 						}
 					],
@@ -312,9 +684,9 @@
 										{
 											"id": "key-is-down",
 											"objectClass": "Keyboard",
-											"sid": 550204947583109,
+											"sid": 444436283357055,
 											"parameters": {
-												"key": 90
+												"key": 88
 											}
 										}
 									],
@@ -347,9 +719,9 @@
 										{
 											"id": "key-is-down",
 											"objectClass": "Keyboard",
-											"sid": 726837662103782,
+											"sid": 795706312416488,
 											"parameters": {
-												"key": 90
+												"key": 88
 											},
 											"isInverted": true
 										}
@@ -796,7 +1168,7 @@
 			"eventType": "variable",
 			"name": "mouseMode",
 			"type": "boolean",
-			"initialValue": "true",
+			"initialValue": "false",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -811,6 +1183,16 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 628046465416980
+		},
+		{
+			"eventType": "variable",
+			"name": "camscale",
+			"type": "number",
+			"initialValue": "0.75",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 590120356498163
 		},
 		{
 			"eventType": "block",
@@ -846,14 +1228,6 @@
 						"transform-z-elevation": true,
 						"transform-visibility": true,
 						"destroy-with-parent": true
-					}
-				},
-				{
-					"id": "set-height",
-					"objectClass": "player",
-					"sid": 240993081181781,
-					"parameters": {
-						"height": "Self.ImageHeight*height_player"
 					}
 				},
 				{
@@ -931,9 +1305,129 @@
 						"object": "player_visual",
 						"image-point-optional": "1"
 					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "button",
+					"sid": 584093374553035,
+					"parameters": {
+						"frame-number": "Self.activated"
+					}
+				},
+				{
+					"id": "stop-animation",
+					"objectClass": "button",
+					"sid": 493657913521223
+				},
+				{
+					"id": "set-position-to-another-object",
+					"objectClass": "higherbound",
+					"sid": 721156498143071,
+					"parameters": {
+						"object": "player_visual",
+						"image-point-optional": "2"
+					}
+				},
+				{
+					"id": "set-position-to-another-object",
+					"objectClass": "anglebound",
+					"sid": 523960626377354,
+					"parameters": {
+						"object": "player_visual",
+						"image-point-optional": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 977249870807347,
+					"parameters": {
+						"variable": "camscale",
+						"value": "lerp(camscale,1,dt*5)"
+					}
+				},
+				{
+					"id": "set-layout-scale",
+					"objectClass": "System",
+					"sid": 813969133641141,
+					"parameters": {
+						"scale": "camscale"
+					}
+				},
+				{
+					"id": "set-image-offset-x",
+					"objectClass": "bgg",
+					"sid": 126519903595703,
+					"parameters": {
+						"offset-x": "Self.scroll_x+Self.ImageOffsetX"
+					}
+				},
+				{
+					"id": "set-image-offset-y",
+					"objectClass": "bgg",
+					"sid": 392310703864604,
+					"parameters": {
+						"offset-y": "Self.scroll_y+Self.ImageOffsetY"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 696157775773880,
+					"parameters": {
+						"variable": "height_player",
+						"value": "clamp(height_player,2.5,10)"
+					}
 				}
 			],
-			"sid": 910221343842183
+			"sid": 910221343842183,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "higherbound",
+							"sid": 834815588309851,
+							"parameters": {
+								"object": "blocks"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "higherbound",
+							"sid": 523519643206582,
+							"parameters": {
+								"object": "tilemap"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 998054014560177,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 977731278593793,
+									"parameters": {
+										"first-value": "player.ImageHeight*height_player",
+										"comparison": 4,
+										"second-value": "abs(player_visual.Y-wheel.Y)"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 578439133912914,
+							"isOrBlock": true
+						}
+					]
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -948,6 +1442,51 @@
 			],
 			"actions": [],
 			"sid": 295669733256080
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-landed",
+					"objectClass": "player",
+					"sid": 951037207914482,
+					"behaviorType": "Platform"
+				}
+			],
+			"actions": [
+				{
+					"id": "shake",
+					"objectClass": "camera",
+					"sid": 732511207372793,
+					"behaviorType": "ScrollTo",
+					"parameters": {
+						"magnitude": "5",
+						"duration": "0.4",
+						"mode": "reducing-magnitude"
+					}
+				},
+				{
+					"id": "spawn-another-object",
+					"objectClass": "player",
+					"sid": 994607944348912,
+					"parameters": {
+						"object": "landing_particles",
+						"layer": "\"main\"",
+						"image-point": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "landing_particles",
+					"sid": 479734970865082,
+					"parameters": {
+						"angle": "270"
+					}
+				}
+			],
+			"sid": 997705002292730
 		},
 		{
 			"eventType": "block",
@@ -1033,31 +1572,6 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 625816957834794,
-					"parameters": {
-						"key": 16
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-max-speed",
-					"objectClass": "player",
-					"sid": 370683491367293,
-					"behaviorType": "Platform",
-					"parameters": {
-						"max-speed": "player.Platform.Speed+10"
-					}
-				}
-			],
-			"sid": 471238448548836
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
 					"id": "is-on-floor",
 					"objectClass": "player",
 					"sid": 527713938768745,
@@ -1065,24 +1579,6 @@
 				}
 			],
 			"actions": [
-				{
-					"id": "set-instvar-value",
-					"objectClass": "player",
-					"sid": 862829595210862,
-					"parameters": {
-						"instance-variable": "angle_vector",
-						"value": "Self.angle_vector*dt*clamp(height_player/2,0,10)+Self.angle_vector"
-					}
-				},
-				{
-					"id": "set-vector-x",
-					"objectClass": "player",
-					"sid": 384395115630373,
-					"behaviorType": "Platform",
-					"parameters": {
-						"vector-x": "lerp(Self.Platform.VectorX,Self.angle_vector*10,dt*18)"
-					}
-				},
 				{
 					"id": "set-instvar-value",
 					"objectClass": "player",
@@ -1107,6 +1603,174 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "compare-instance-variable",
+							"objectClass": "player",
+							"sid": 123901546553599,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"comparison": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "player_visual",
+							"sid": 916033181169982,
+							"parameters": {
+								"object": "blocks",
+								"offset-x": "-1",
+								"offset-y": "0"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "player",
+							"sid": 475537837543029,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"value": "Self.angle_vector*dt*clamp(height_player/2,1,4)+Self.angle_vector"
+							}
+						},
+						{
+							"id": "set-vector-x",
+							"objectClass": "player",
+							"sid": 716562509866405,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-x": "lerp(Self.Platform.VectorX,Self.angle_vector*10,dt*18)"
+							}
+						}
+					],
+					"sid": 699115071337861
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "player",
+							"sid": 663931627755952,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"comparison": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "player_visual",
+							"sid": 983536070846043,
+							"parameters": {
+								"object": "blocks",
+								"offset-x": "-1",
+								"offset-y": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-vector-x",
+							"objectClass": "player",
+							"sid": 352596754863359,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-x": "0"
+							}
+						}
+					],
+					"sid": 972820564220907
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "player",
+							"sid": 160091634082826,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"comparison": 2,
+								"value": "0"
+							}
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "player_visual",
+							"sid": 659103609502853,
+							"parameters": {
+								"object": "blocks",
+								"offset-x": "1",
+								"offset-y": "0"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "player",
+							"sid": 456130834109074,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"value": "Self.angle_vector*dt*clamp(height_player/2,1,4)+Self.angle_vector"
+							}
+						},
+						{
+							"id": "set-vector-x",
+							"objectClass": "player",
+							"sid": 436805483661770,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-x": "lerp(Self.Platform.VectorX,Self.angle_vector*10,dt*18)"
+							}
+						}
+					],
+					"sid": 174462368503838
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "player",
+							"sid": 122967969396644,
+							"parameters": {
+								"instance-variable": "angle_vector",
+								"comparison": 2,
+								"value": "0"
+							}
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "player_visual",
+							"sid": 165303287260792,
+							"parameters": {
+								"object": "blocks",
+								"offset-x": "1",
+								"offset-y": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-vector-x",
+							"objectClass": "player",
+							"sid": 776092608332099,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-x": "0"
+							}
+						}
+					],
+					"sid": 440733496528770
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "key-is-down",
 							"objectClass": "Keyboard",
 							"sid": 638328266794891,
@@ -1127,18 +1791,10 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "player",
-							"sid": 651904015448783,
+							"sid": 786338358394750,
 							"parameters": {
 								"instance-variable": "flip_state",
-								"value": "0"
-							}
-						},
-						{
-							"id": "set-mirrored",
-							"objectClass": "player",
-							"sid": 618827254541310,
-							"parameters": {
-								"state": "not-mirrored"
+								"value": "1"
 							}
 						},
 						{
@@ -1178,6 +1834,14 @@
 						{
 							"id": "key-is-down",
 							"objectClass": "Keyboard",
+							"sid": 485120637714983,
+							"parameters": {
+								"key": 81
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
 							"sid": 688946997945048,
 							"parameters": {
 								"key": 37
@@ -1188,18 +1852,10 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "player",
-							"sid": 703260787016444,
+							"sid": 271874552600302,
 							"parameters": {
 								"instance-variable": "flip_state",
-								"value": "180"
-							}
-						},
-						{
-							"id": "set-mirrored",
-							"objectClass": "player",
-							"sid": 898540954549694,
-							"parameters": {
-								"state": "mirrored"
+								"value": "-1"
 							}
 						},
 						{
@@ -1268,8 +1924,8 @@
 							"objectClass": "camera",
 							"sid": 365465462940835,
 							"parameters": {
-								"x": "lerp(Self.X,lerp(player.X,camera_lock.X,1),dt*5)",
-								"y": "lerp(Self.y,lerp(player.Y,camera_lock.Y,1),dt*5)"
+								"x": "lerp(Self.X,lerp(player_visual.X,camera_lock.X,1),dt*5)",
+								"y": "lerp(Self.y,lerp(player_visual.Y,camera_lock.Y,1),dt*5)"
 							}
 						}
 					],
@@ -1302,8 +1958,8 @@
 							"objectClass": "camera",
 							"sid": 818606256283261,
 							"parameters": {
-								"x": "lerp(Self.X,clamp(lerp(player.X,Mouse.X,0.35),camera_lock.ImagePointX(1)+320,camera_lock.ImagePointX(2)-320),dt*9)",
-								"y": "lerp(Self.y,clamp(lerp(player.y,Mouse.y,0.35),camera_lock.ImagePointY(1)+180,camera_lock.ImagePointY(2)-180),dt*9)"
+								"x": "lerp(Self.X,clamp(lerp(player_visual.X,Mouse.X,0.35),camera_lock.ImagePointX(1)+320,camera_lock.ImagePointX(2)-320),dt*9)",
+								"y": "lerp(Self.y,clamp(lerp(player_visual.y,Mouse.y,0.35),camera_lock.ImagePointY(1)+180,camera_lock.ImagePointY(2)-180),dt*9)"
 							}
 						}
 					],
@@ -1328,8 +1984,8 @@
 							"objectClass": "camera",
 							"sid": 807560289276619,
 							"parameters": {
-								"x": "lerp(Self.X,lerp(player.X,Mouse.X,0.35),dt*19)",
-								"y": "lerp(Self.y,lerp(player.y,Mouse.y,0.35),dt*19)"
+								"x": "lerp(Self.X,lerp(player_visual.X,Mouse.X,0.35),dt*19)",
+								"y": "lerp(Self.y,lerp(player_visual.y,Mouse.y,0.35),dt*19)"
 							}
 						}
 					],
@@ -1411,10 +2067,10 @@
 						{
 							"id": "set-position",
 							"objectClass": "camera",
-							"sid": 477019259081096,
+							"sid": 848037812922196,
 							"parameters": {
-								"x": "lerp(Self.X,clamp(player.X+player.Platform.VectorX/4.5+cos(player.bullet5.AngleOfMotion)*player.Bullet5.Speed/8,camera_lock.ImagePointX(1)+320,camera_lock.ImagePointX(2)-320),dt*8)",
-								"y": "lerp(Self.y,clamp(player.Y,camera_lock.ImagePointY(1)+180,camera_lock.ImagePointY(2)-180),dt*9)"
+								"x": "lerp(Self.X,clamp(player_visual.X+player.Platform.VectorX/4.5+cos(player.bullet5.AngleOfMotion)*player.Bullet5.Speed/8,camera_lock.ImagePointX(1)+320,camera_lock.ImagePointX(2)-320),dt*8)",
+								"y": "lerp(Self.y,clamp(player_visual.Y,camera_lock.ImagePointY(1)+180,camera_lock.ImagePointY(2)-180),dt*9)"
 							}
 						}
 					],
@@ -1437,10 +2093,10 @@
 						{
 							"id": "set-position",
 							"objectClass": "camera",
-							"sid": 553395819886554,
+							"sid": 994535623625118,
 							"parameters": {
-								"x": "lerp(Self.X,player.X+player.Platform.VectorX/4.5+cos(player.bullet5.AngleOfMotion)*player.Bullet5.Speed/8,dt*8)",
-								"y": "lerp(Self.y,player.Y,dt*9)"
+								"x": "lerp(Self.X,player_visual.X+player.Platform.VectorX/4.5+cos(player.bullet5.AngleOfMotion)*player.Bullet5.Speed/8,dt*8)",
+								"y": "lerp(Self.y,player_visual.Y,dt*9)"
 							}
 						}
 					],
@@ -1471,6 +2127,2340 @@
 				}
 			],
 			"sid": 209454340750206
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player_visual",
+					"sid": 228558187064841,
+					"parameters": {
+						"object": "button"
+					}
+				},
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "wheel",
+					"sid": 190449570589727,
+					"parameters": {
+						"object": "button"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 248699740596969,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "button",
+							"sid": 863558285189043,
+							"parameters": {
+								"instance-variable": "activated"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "button",
+							"sid": 230192136107257,
+							"parameters": {
+								"instance-variable": "activated",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 247043653735260,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "door",
+									"sid": 902019644656157,
+									"parameters": {
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "button.id"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "tween-two-properties",
+									"objectClass": "door",
+									"sid": 600669032017797,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "position",
+										"end-x": "Self.X+button.x_delta",
+										"end-y": "Self.y+button.y_delta",
+										"time": "button.time_value",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "door",
+									"sid": 156668190805579,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "size",
+										"end-x": "Self.Width+button.height_delta",
+										"end-y": "Self.height+button.width_delta",
+										"time": "button.time_value",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "door",
+									"sid": 501227521413988,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "offsetAngle",
+										"end-value": "Self.Angle+button.angle_delta",
+										"time": "button.time_value",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 181413473973595
+						}
+					]
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player_visual",
+					"sid": 736201019795936,
+					"parameters": {
+						"object": "button2"
+					}
+				},
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "wheel",
+					"sid": 946884943892979,
+					"parameters": {
+						"object": "button2"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 796644092696173,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "button2",
+							"sid": 553288056696899,
+							"parameters": {
+								"instance-variable": "activated"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "button2",
+							"sid": 820673463204415,
+							"parameters": {
+								"instance-variable": "activated",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 808421662755260,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "door",
+									"sid": 178838350362012,
+									"parameters": {
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "button2.id"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "play-by-name",
+									"objectClass": "Audio",
+									"sid": 318883128187165,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "button2.sfx_Start",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "door",
+									"sid": 530604063040353,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "position",
+										"end-x": "Self.X+button2.x_delta",
+										"end-y": "Self.y+button2.y_delta",
+										"time": "button2.time_value",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "door",
+									"sid": 643440863571962,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "size",
+										"end-x": "Self.Width+button2.height_delta",
+										"end-y": "Self.height+button2.width_delta",
+										"time": "button2.time_value",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "door",
+									"sid": 809049924069175,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "offsetAngle",
+										"end-value": "Self.Angle+button2.angle_delta",
+										"time": "button2.time_value",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 749081862870562
+								},
+								{
+									"id": "play-by-name",
+									"objectClass": "Audio",
+									"sid": 499436938580448,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "button2.sfx_end",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"id": "shake",
+									"objectClass": "camera",
+									"sid": 508763627442769,
+									"behaviorType": "ScrollTo",
+									"parameters": {
+										"magnitude": "button2.screenshake_mag",
+										"duration": "button2.screenshake_t",
+										"mode": "reducing-magnitude"
+									}
+								}
+							],
+							"sid": 865474153114948
+						}
+					]
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "variable",
+			"name": "song",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 111129744273646
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "MUSICPLAYER",
+					"sid": 369137311358172
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "MUSICPLAYER",
+					"sid": 733441260560234,
+					"parameters": {
+						"instance-variable": "id",
+						"comparison": 1,
+						"value": "song"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "stop-all",
+					"objectClass": "Audio",
+					"sid": 268427426717018
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 709711063706550,
+					"parameters": {
+						"variable": "song",
+						"value": "MUSICPLAYER.id"
+					}
+				},
+				{
+					"id": "play-by-name",
+					"objectClass": "Audio",
+					"sid": 869020449418770,
+					"parameters": {
+						"folder": "music",
+						"audio-file-name": "MUSICPLAYER.song",
+						"loop": "looping",
+						"volume": "-100",
+						"stereo-pan": "0",
+						"tag-optional": "MUSICPLAYER.id"
+					}
+				},
+				{
+					"id": "fade-volume",
+					"objectClass": "Audio",
+					"sid": 962805966893585,
+					"parameters": {
+						"tag": "MUSICPLAYER.id",
+						"db": "MUSICPLAYER.VOLUME",
+						"duration": "1",
+						"ending": "keep-playing"
+					}
+				}
+			],
+			"sid": 315180907446484
+		},
+		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-angle",
+					"objectClass": "player",
+					"sid": 836582376933417,
+					"parameters": {
+						"angle": "0"
+					}
+				}
+			],
+			"sid": 972846552338350
+		},
+		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [],
+			"sid": 878311403289551
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "dialog_sys",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "face_toward_player",
+							"sid": 899671377006882,
+							"parameters": {
+								"instance-variable": "activated"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 520381684542834,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "face_toward_player",
+									"sid": 932436269135719,
+									"parameters": {
+										"comparison": 2,
+										"x-co-ordinate": "player.X"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "face_toward_player",
+									"sid": 563276728385201,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								}
+							],
+							"sid": 593799553582526
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "face_toward_player",
+									"sid": 967646224947652,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "player.X"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "face_toward_player",
+									"sid": 693673375870051,
+									"parameters": {
+										"state": "mirrored"
+									}
+								}
+							],
+							"sid": 555820861035355
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "stop-animation",
+							"objectClass": "dialog_sprite",
+							"sid": 661546339141668
+						}
+					],
+					"sid": 915085743786222
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 545790287736728,
+							"parameters": {
+								"object": "Aruna_0"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "Aruna_0",
+							"sid": 121228699219407,
+							"parameters": {
+								"mode": "disable",
+								"effect": "\"Brightness\""
+							}
+						},
+						{
+							"id": "set-layer-opacity",
+							"objectClass": "System",
+							"sid": 676419732263462,
+							"parameters": {
+								"layer": "\"uidialog\"",
+								"opacity": "lerp(LayerOpacity(\"uidialog\"),0,dt*9)"
+							}
+						}
+					],
+					"sid": 293072849050333
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Aruna_0",
+							"sid": 160357690933242,
+							"parameters": {
+								"instance-variable": "TALK"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-active",
+							"objectClass": "Aruna_0",
+							"sid": 941438106041074,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "inactive"
+							}
+						},
+						{
+							"id": "set-active",
+							"objectClass": "Aruna_0",
+							"sid": 315787418083709,
+							"behaviorType": "Sine2",
+							"parameters": {
+								"state": "inactive"
+							}
+						}
+					],
+					"sid": 491340136885973
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 941443329457936,
+							"parameters": {
+								"object": "Aruna_0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layer-opacity",
+							"objectClass": "System",
+							"sid": 555118840088977,
+							"parameters": {
+								"layer": "\"uidialog\"",
+								"opacity": "lerp(LayerOpacity(\"uidialog\"),100,dt*9)"
+							}
+						}
+					],
+					"sid": 474106488056226,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 820578476180846,
+									"parameters": {
+										"key": 69
+									}
+								},
+								{
+									"id": "is-running-typewriter-text",
+									"objectClass": "dialog",
+									"sid": 686250420521552,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-instvar",
+									"objectClass": "Aruna_0",
+									"sid": 842849734510326,
+									"parameters": {
+										"instance-variable": "Dialog",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 822683065870279,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Aruna_0",
+											"sid": 878939258870600,
+											"parameters": {
+												"instance-variable": "DIALOG_TYPE",
+												"comparison": 0,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 420320187778688,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 142748046164445,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 863190745615770,
+													"parameters": {
+														"text": "\"Hmm, looks like your core is in bad shape, you're trying to fix it aren't you?\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 178240935381912,
+													"parameters": {
+														"frame-number": "1"
+													}
+												}
+											],
+											"sid": 556160350745890
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 198643152756629,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 442035591453521,
+													"parameters": {
+														"text": "\"....\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 540513902109011,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 256194655579842
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 195396407407550,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "2"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 839029412723686,
+													"parameters": {
+														"text": "\"Hmm, you can't talk either. Well, one look at me and you can probably tell I'm not in great shape either haha.\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 772546585344945,
+													"parameters": {
+														"frame-number": "1"
+													}
+												}
+											],
+											"sid": 821057291765113
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 627820474547852,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "3"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 267026840456369,
+													"parameters": {
+														"text": "\"Since you're a newer model, you probably don't know what the world used to look like, do you?\"",
+														"duration": "1"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 900629817266033,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 629128106288361
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 209325196216063,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "4"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 582210292301910,
+													"parameters": {
+														"text": "\"The sky used to be blue, the ground green, and the most important part, humans used to walk around, happy as can be.\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 642070304123405,
+													"parameters": {
+														"frame-number": "1"
+													}
+												}
+											],
+											"sid": 318756360214888
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 186476544973863,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "5"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 896953797136174,
+													"parameters": {
+														"text": "\"Well, one look around and it's not that place anymore, I want so desperately to go back to that time.\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 633905138726276,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 624500583963675
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 192072128460041,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "6"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 313788946225874,
+													"parameters": {
+														"text": "\"Tell you what, why don't you take my core? I don't need it anymore anyways.\"",
+														"duration": "2"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 156989530167889,
+													"parameters": {
+														"frame-number": "1"
+													}
+												}
+											],
+											"sid": 233570630041744
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 387251689624572,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "7"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 767160330511310,
+													"parameters": {
+														"text": "\"But, before you take it, will you let me play for you one last time?\" ",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 215303504039550,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 579403877221019
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 630974735844245,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "8"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 441236461333986,
+													"parameters": {
+														"text": "\".....\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 227560577972152,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 507935554644918
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 887414291058964,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 5,
+														"value": "9"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "fade-volume",
+													"objectClass": "Audio",
+													"sid": 711384971662676,
+													"parameters": {
+														"tag": "MUSICPLAYER.id",
+														"db": "-100",
+														"duration": "1",
+														"ending": "stop"
+													}
+												},
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 496562655223795,
+													"parameters": {
+														"seconds": "1.0",
+														"use-timescale": true
+													}
+												},
+												{
+													"id": "play",
+													"objectClass": "Audio",
+													"sid": 913149673572306,
+													"parameters": {
+														"audio-file": "Guitar bot",
+														"loop": "not-looping",
+														"volume": "-100",
+														"stereo-pan": "0",
+														"tag-optional": "\"guitar_bot\""
+													}
+												},
+												{
+													"id": "fade-volume",
+													"objectClass": "Audio",
+													"sid": 107248171231595,
+													"parameters": {
+														"tag": "\"guitar_bot\"",
+														"db": "0",
+														"duration": "1",
+														"ending": "keep-playing"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "dialog",
+													"sid": 904677037803266,
+													"parameters": {
+														"text": "\"\""
+													}
+												},
+												{
+													"id": "destroy",
+													"objectClass": "Aruna_0",
+													"sid": 619503985353801
+												},
+												{
+													"id": "follow-object",
+													"objectClass": "wheel2",
+													"sid": 325978089755083,
+													"behaviorType": "Follow",
+													"parameters": {
+														"object": "player",
+														"from-current-position": true
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "fren",
+													"sid": 403953849545014,
+													"parameters": {
+														"instance-variable": "activated",
+														"value": "true"
+													}
+												}
+											],
+											"sid": 393327480331974
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Aruna_0",
+											"sid": 483946184492659,
+											"parameters": {
+												"instance-variable": "DIALOG_TYPE",
+												"comparison": 0,
+												"value": "1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 385315583156712,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 176214049396883,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 748052367095158,
+													"parameters": {
+														"text": "\"Blanky : AH who TF are you?\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 910876859246549,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 942064082575243,
+													"parameters": {
+														"frame-number": "2"
+													}
+												}
+											],
+											"sid": 223888759472476
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 138725806937740,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 295016604096691,
+													"parameters": {
+														"text": "\"You : uhhhhh... im Aruna.. im uhh trying to get to the core basin\"",
+														"duration": "1"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 590477040850679,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "false"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 164185942313983,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 942109703478222
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 534594935437248,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "2"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 602292582608465,
+													"parameters": {
+														"text": "\"Blanky : nuh uh\"",
+														"duration": "2"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 611701109297642,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 105183492970053,
+													"parameters": {
+														"frame-number": "2"
+													}
+												}
+											],
+											"sid": 921430738082886
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 510436219648743,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "3"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 874132647387116,
+													"parameters": {
+														"text": "\"You : pleaseeeee\"",
+														"duration": "1"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 855616999029875,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "false"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 336793098099529,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 105256219349894
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 804893564571094,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "4"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 887159269534892,
+													"parameters": {
+														"text": "\"Blanky : nuh uh\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 130048183262421,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 489603208283084,
+													"parameters": {
+														"frame-number": "2"
+													}
+												}
+											],
+											"sid": 234608296684512
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 901738011350379,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "5"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 162404246468472,
+													"parameters": {
+														"text": "\"You : idiot says what\"",
+														"duration": "1"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 749282832554719,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "false"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 794497708580833,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 618362788068995
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 854017200522185,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "6"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 294693523636672,
+													"parameters": {
+														"text": "\"Blanky: what?\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 968669204416667,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 470615083771789,
+													"parameters": {
+														"frame-number": "2"
+													}
+												}
+											],
+											"sid": 359500473979067
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 753484384100177,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "7"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 213615363283634,
+													"parameters": {
+														"text": "\"You : :3\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 894866061412543,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 793065936921049,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 224507982704386
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 467250091382529,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 5,
+														"value": "8"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 626223860806485,
+													"parameters": {
+														"text": "\"Blanky : prepare for battle..., ill give you the first blow\"",
+														"duration": "2"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 185543604113473,
+													"parameters": {
+														"frame-number": "2"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 639877467734420,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "false"
+													}
+												},
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 971668415338372,
+													"parameters": {
+														"seconds": "1.0",
+														"use-timescale": true
+													}
+												},
+												{
+													"id": "destroy",
+													"objectClass": "Aruna_0",
+													"sid": 571203629982951
+												},
+												{
+													"id": "set-text",
+													"objectClass": "dialog",
+													"sid": 872599395108347,
+													"parameters": {
+														"text": "\"\""
+													}
+												}
+											],
+											"sid": 784477937216070
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Aruna_0",
+											"sid": 581807785801512,
+											"parameters": {
+												"instance-variable": "DIALOG_TYPE",
+												"comparison": 0,
+												"value": "2"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 299913196546080,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 595089018574745,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 521784472231322,
+													"parameters": {
+														"text": "\"Dll : You.... I sense power in you\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 729314629805683,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 309216543290892,
+													"parameters": {
+														"frame-number": "3"
+													}
+												}
+											],
+											"sid": 693193421242673
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 335736371137206,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 211431483726082,
+													"parameters": {
+														"text": "\"You : well ya.\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 732539922981021,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "false"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 303823709375993,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 317031861862139
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 180427855803883,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "2"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 347812398790744,
+													"parameters": {
+														"text": "\"Dll : lets fight...\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 177256453165820,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 339310295933280,
+													"parameters": {
+														"frame-number": "3"
+													}
+												}
+											],
+											"sid": 905680881913009
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 963721652622341,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 0,
+														"value": "3"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 282724217297873,
+													"parameters": {
+														"text": "\"You : ok..?\"",
+														"duration": "2"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 785454705327238,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "false"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 954734410150033,
+													"parameters": {
+														"frame-number": "0"
+													}
+												}
+											],
+											"sid": 667340846483272
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Aruna_0",
+													"sid": 258338251831470,
+													"parameters": {
+														"instance-variable": "Dialog",
+														"comparison": 5,
+														"value": "4"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "typewriter-text",
+													"objectClass": "dialog",
+													"sid": 680602100066102,
+													"parameters": {
+														"text": "\"DLL : the first strike is yours..\"",
+														"duration": "0.5"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "dialog_sprite",
+													"sid": 671211354935485,
+													"parameters": {
+														"frame-number": "3"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "Aruna_0",
+													"sid": 748549455378255,
+													"parameters": {
+														"instance-variable": "TALK",
+														"value": "false"
+													}
+												},
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 753421037595288,
+													"parameters": {
+														"seconds": "1.0",
+														"use-timescale": true
+													}
+												},
+												{
+													"id": "destroy",
+													"objectClass": "Aruna_0",
+													"sid": 286340014054212
+												},
+												{
+													"id": "set-text",
+													"objectClass": "dialog",
+													"sid": 883555810878279,
+													"parameters": {
+														"text": "\"\""
+													}
+												}
+											],
+											"sid": 808536487731732
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Aruna_0",
+									"sid": 555165745102863,
+									"parameters": {
+										"instance-variable": "Dialog",
+										"comparison": 0,
+										"value": "-1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-effect-enabled",
+									"objectClass": "Aruna_0",
+									"sid": 631079854672849,
+									"parameters": {
+										"mode": "enable",
+										"effect": "\"Brightness\""
+									}
+								}
+							],
+							"sid": 862917968390489,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "every-x-seconds",
+											"objectClass": "System",
+											"sid": 523594653512745,
+											"parameters": {
+												"interval-seconds": "0.1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 759552418217993
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-running-typewriter-text",
+							"objectClass": "dialog",
+							"sid": 522318121452821
+						}
+					],
+					"actions": [],
+					"sid": 948422328335603,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 625613950837848,
+									"parameters": {
+										"interval-seconds": "0.1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-playback-rate",
+									"objectClass": "Audio",
+									"sid": 594024522931347,
+									"parameters": {
+										"tag": "\"randomisedpitch\"",
+										"playback-rate": "random(0.5,1.5)"
+									}
+								}
+							],
+							"sid": 744391905158005
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "Aruna_0",
+									"sid": 225326395780065,
+									"parameters": {
+										"instance-variable": "TALK"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 726803066594658
+						}
+					]
+				}
+			],
+			"sid": 654419600748058
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player_visual",
+					"sid": 155964897921794,
+					"parameters": {
+						"object": "attack2"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player_visual",
+					"sid": 136361678006225,
+					"parameters": {
+						"instance-variable": "hp",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 144719729929519
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player_visual",
+					"sid": 603056219609952,
+					"parameters": {
+						"object": "console_command"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "INTRO_TEXT2",
+					"sid": 422211427967765,
+					"parameters": {
+						"text": "console_command.text",
+						"duration": "console_command.typerightlength"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "INTRO_TEXT2",
+					"sid": 984266356962216,
+					"parameters": {
+						"instance-variable": "fade_delay",
+						"value": "console_command.fade_delay"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "INTRO_TEXT2",
+					"sid": 769793668991676,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "100",
+						"time": "0.5",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "console_command",
+					"sid": 597616995430433
+				}
+			],
+			"sid": 350053324374997
+		},
+		{
+			"eventType": "variable",
+			"name": "grace_timer",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 219243214101995
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-typewriter-text-finished",
+					"objectClass": "INTRO_TEXT2",
+					"sid": 222563354698292
+				}
+			],
+			"actions": [
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 550693997975931,
+					"parameters": {
+						"seconds": "INTRO_TEXT2.fade_delay",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "INTRO_TEXT2",
+					"sid": 224830885412527,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "0",
+						"time": "0.5",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 753743853564715
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 642422485837206,
+					"parameters": {
+						"variable": "grace_timer",
+						"comparison": 2,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player_visual",
+					"sid": 192080556358190,
+					"parameters": {
+						"instance-variable": "hp",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 705832125870925
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 514137471953993,
+					"parameters": {
+						"first-value": "abs(player.angle_vector)",
+						"comparison": 4,
+						"second-value": "75"
+					}
+				},
+				{
+					"id": "is-on-floor",
+					"objectClass": "player",
+					"sid": 398249751171223,
+					"behaviorType": "Platform"
+				},
+				{
+					"id": "compare-speed",
+					"objectClass": "player",
+					"sid": 622391962714944,
+					"behaviorType": "Platform",
+					"parameters": {
+						"comparison": 2,
+						"speed": "45"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 384334798760824,
+					"parameters": {
+						"first-value": "abs(angle_velocity)",
+						"comparison": 2,
+						"second-value": "25"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 784869299266934,
+					"parameters": {
+						"variable": "grace_timer",
+						"value": "dt*10"
+					}
+				}
+			],
+			"sid": 931865084708063
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 770159173359535
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 716343960909303,
+					"parameters": {
+						"variable": "grace_timer",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 389396062519384
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 203666472486847
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 246640010730446,
+					"parameters": {
+						"variable": "grace_timer",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 632856208123550
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-y",
+					"objectClass": "player",
+					"sid": 102968491537164,
+					"parameters": {
+						"comparison": 4,
+						"y-co-ordinate": "LayoutHeight+player.Height*2"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player_visual",
+					"sid": 209255888948490,
+					"parameters": {
+						"instance-variable": "hp",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 700858164637873
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "player_visual",
+					"sid": 863532492733087,
+					"parameters": {
+						"instance-variable": "hp",
+						"comparison": 3,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 626176409437065,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 543420821980841
+						}
+					],
+					"actions": [
+						{
+							"id": "set-object-time-scale",
+							"objectClass": "System",
+							"sid": 367803385902753,
+							"parameters": {
+								"object": "player",
+								"time-scale": "0"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 154327619335272,
+							"parameters": {
+								"variable": "camscale",
+								"value": "1.25\n"
+							}
+						},
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 588596903381347,
+							"parameters": {
+								"time-scale": "0.5"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 198697085639600,
+							"parameters": {
+								"seconds": "0.25",
+								"use-timescale": false
+							}
+						},
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 815841139327787,
+							"parameters": {
+								"time-scale": "1"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 919976220973750,
+							"parameters": {
+								"seconds": "1",
+								"use-timescale": false
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "player_visual",
+							"sid": 615932457986014,
+							"parameters": {
+								"object": "EXPLOSION",
+								"layer": "\"effects\"",
+								"image-point": "1",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "EXPLOSION",
+							"sid": 420438550147410,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "scale",
+								"end-x": "15",
+								"end-y": "15",
+								"time": "0.25",
+								"ease": "easeoutsine",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 329445345954712
+						},
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 141834857682344
+						}
+					],
+					"sid": 908318957573328
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "player_visual",
+					"sid": 929369357761146,
+					"parameters": {
+						"instance-variable": "hp",
+						"comparison": 3,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 577598164445190,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 877664738251817,
+							"parameters": {
+								"interval-seconds": "0.1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "spawn-another-object",
+							"objectClass": "player_visual",
+							"sid": 421015477416334,
+							"parameters": {
+								"object": "Particles3",
+								"layer": "\"effects\"",
+								"image-point": "1",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "shake",
+							"objectClass": "camera",
+							"sid": 241395448900345,
+							"behaviorType": "ScrollTo",
+							"parameters": {
+								"magnitude": "5",
+								"duration": "0.4",
+								"mode": "constant-magnitude"
+							}
+						}
+					],
+					"sid": 114104948804437
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 297122201003697
+				}
+			],
+			"actions": [
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 924967181141368,
+					"parameters": {
+						"time-scale": "1"
+					}
+				}
+			],
+			"sid": 267942577798306
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 792472333582461,
+					"parameters": {
+						"key": 82
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player_visual",
+					"sid": 544553504907520,
+					"parameters": {
+						"instance-variable": "hp",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 391127260768251
 		}
 	],
 	"sid": 323462168211922

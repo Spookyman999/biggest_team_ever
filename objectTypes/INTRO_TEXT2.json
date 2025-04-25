@@ -1,0 +1,43 @@
+{
+	"name": "INTRO_TEXT2",
+	"plugin-id": "Text",
+	"sid": 270299523454193,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "fade_delay",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 879677164490075
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 361512524891737
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 689259163273737
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 575726029767091
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "glowhorizontal",
+			"name": "GlowHorizontal"
+		},
+		{
+			"effectId": "glowvertical",
+			"name": "GlowVertical"
+		}
+	]
+}

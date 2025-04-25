@@ -1,0 +1,69 @@
+{
+	"name": "MUSICPLAYER",
+	"plugin-id": "Sprite",
+	"sid": 749918728538650,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "song",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 336857093889009
+		},
+		{
+			"name": "id",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 731904311899081
+		},
+		{
+			"name": "volume",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 148337788851273
+		},
+		{
+			"name": "bpm",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 687099453872835
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 64,
+						"height": 62,
+						"originX": 0.5,
+						"originY": 0.5161290322580645,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 6609826,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 273168681286208,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 12
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"name": "bgg",
+	"plugin-id": "TiledBg",
+	"sid": 459750355327850,
+	"instanceVariables": [
+		{
+			"name": "scroll_x",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 888482979635986
+		},
+		{
+			"name": "scroll_y",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 943549887866344
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"bg"
+	]
+}

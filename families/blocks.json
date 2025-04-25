@@ -1,0 +1,12 @@
+{
+	"name": "blocks",
+	"plugin-id": "NinePatch",
+	"sid": 374661107228252,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"solidTest",
+		"solidTest2"
+	]
+}

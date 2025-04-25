@@ -1,0 +1,67 @@
+{
+	"name": "attack2",
+	"plugin-id": "Sprite",
+	"sid": 731520177075693,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "X_LOC",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 536253977644581
+		},
+		{
+			"name": "Y_LOC",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 738165954512807
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 20,
+						"height": 20,
+						"originX": 0.1,
+						"originY": 0.1,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1226160,
+						"collisionPoly": {
+							"points": [
+								0.18,
+								0.18,
+								0.82,
+								0.18,
+								0.82,
+								0.82,
+								0.18,
+								0.82
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 690954301122063,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 48
+			}
+		],
+		"subfolders": []
+	}
+}
