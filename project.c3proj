@@ -206,6 +206,22 @@
 		},
 		{
 			"type": "effect",
+			"id": "federicoCalchera_boxBlurHorizontal",
+			"name": "Box Blur Horizontal",
+			"author": "Federico Calchera",
+			"bundled": true,
+			"version": "1.0.0.0"
+		},
+		{
+			"type": "effect",
+			"id": "federicoCalchera_boxBlurVertical",
+			"name": "Box Blur Vertical",
+			"author": "Federico Calchera",
+			"bundled": true,
+			"version": "1.0.0.0"
+		},
+		{
+			"type": "effect",
 			"id": "glowhorizontal",
 			"name": "Glow horizontal",
 			"author": "Scirra",
@@ -215,6 +231,41 @@
 			"type": "effect",
 			"id": "glowvertical",
 			"name": "Glow vertical",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "multiply",
+			"name": "Multiply",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "noise",
+			"name": "Noise",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "overlay",
+			"name": "Overlay",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "radialblur",
+			"name": "Radial blur",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "screen",
+			"name": "Screen",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -232,6 +283,13 @@
 			"author": "skymen",
 			"bundled": true,
 			"version": "2.0.0.3"
+		},
+		{
+			"type": "effect",
+			"id": "vignette",
+			"name": "Vignette",
+			"author": "Brad Larson",
+			"bundled": false
 		}
 	],
 	"uniqueId": "6gi3onr77l7",
@@ -295,7 +353,27 @@
 			"console_command",
 			"INTRO_TEXT2",
 			"EXPLOSION",
-			"Particles3"
+			"Particles3",
+			"sky",
+			"clouds",
+			"title",
+			"new",
+			"x",
+			"start",
+			"engulf",
+			"filter2",
+			"rain",
+			"sine",
+			"checkpoint",
+			"solidTest3",
+			"stop",
+			"bloom_filter",
+			"next",
+			"TiledBackgroundxz",
+			"inxyy",
+			"tutorial",
+			"dialog_X",
+			"normal_text2x"
 		],
 		"subfolders": []
 	},
@@ -315,8 +393,11 @@
 	"layouts": {
 		"items": [
 			"title",
+			"cutscene",
 			"level_0",
 			"level_1",
+			"level_2",
+			"cutscene2",
 			"objects"
 		],
 		"subfolders": []
@@ -324,7 +405,10 @@
 	"eventSheets": {
 		"items": [
 			"Event sheet 1",
-			"Event sheet 2"
+			"Event sheet 2",
+			"title",
+			"Event sheet 3",
+			"Event sheet 4"
 		],
 		"subfolders": []
 	},
@@ -360,7 +444,437 @@
 					}
 				}
 			],
-			"subfolders": []
+			"subfolders": [
+				{
+					"items": [
+						{
+							"name": "Dialogue sfx.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 190386536597477,
+							"file-info": {
+								"purpose": "none"
+							}
+						}
+					],
+					"subfolders": [
+						{
+							"items": [
+								{
+									"name": "77_flesh_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 158615138584240,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "69_Enemy_death_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 659672983331500,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "55_Encounter_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 676402467134679,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "51_Flee_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 336991501830371,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "39_Block_4.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 796287144183791,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "35_Miss_Evade_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 897636434161646,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "22_Slash_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 244755640797038,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "15_Impact_flesh_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 713423383401037,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "08_Bite_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 348510522605620,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "03_Claw_03.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 791333961272094,
+									"file-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": [],
+							"name": "10_Battle_SFX"
+						},
+						{
+							"items": [
+								{
+									"name": "033_Denied_03.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 242808752819465,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "001_Hover_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 909264212796106,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "013_Confirm_03.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 905020344109037,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "029_Decline_09.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 643382266350509,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "051_use_item_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 240338509225208,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "070_Equip_10.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 520314287141582,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "071_Unequip_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 974622474850830,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "079_Buy_sell_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 277470867879493,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "092_Pause_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 451449320325007,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "098_Unpause_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 786946894019154,
+									"file-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": [],
+							"name": "10_UI_Menu_SFX"
+						},
+						{
+							"items": [
+								{
+									"name": "88_Teleport_3.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 719036870722948,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "61_Hit_4.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 118328936958845,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "56_Attack_4.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 702948592642647,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "52_Dive_3.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 204472900727755,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "45_Landing_2.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 642199421765301,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "42_Cling_climb_4.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 492775660159673,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "30_Jump_4.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 608614155592640,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "26_Swim_Submerged_3.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 184437798768932,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "14_Step_water_3.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 456014201886044,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "12_Step_wood_4.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 794513562263673,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "08_Step_rock_3.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 171587430005283,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "03_Step_grass_4.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 921896882159542,
+									"file-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": [],
+							"name": "12_Player_Movement_SFX"
+						},
+						{
+							"items": [
+								{
+									"name": "46_Poison_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 345437420215460,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "45_Charge_05.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 812588078727260,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "30_Earth_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 888701735343413,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "25_Wind_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 958415874964959,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "22_Water_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 619512030876121,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "18_Thunder_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 367491094383180,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "13_Ice_explosion_2.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 199530584591604,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "04_Fire_explosion_04_medium.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 185183480181344,
+									"file-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": [],
+							"name": "8_Atk_Magic_SFX"
+						},
+						{
+							"items": [
+								{
+									"name": "48_Speed_up_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 968462289536280,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "44_Sleep_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 520317083900439,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "39_Absorb_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 374330746893665,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "21_Debuff_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 996889530668618,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "17_Def_buff_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 344796766874756,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "16_Atk_buff_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 337445721829099,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "02_Heal_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 179360977176108,
+									"file-info": {
+										"purpose": "none"
+									}
+								},
+								{
+									"name": "30_Revive_03.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 354954968956637,
+									"file-info": {
+										"purpose": "none"
+									}
+								}
+							],
+							"subfolders": [],
+							"name": "8_Buffs_Heals_SFX"
+						}
+					],
+					"name": "RPG_Essentials_Free"
+				}
+			]
 		},
 		"music": {
 			"items": [
@@ -376,6 +890,30 @@
 					"name": "Guitar bot.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 139631591983342,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Another Dystopian Song kinda.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 267666858363419,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Unicycle Piano 4.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 458434984306598,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Shattered Lights.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 544900050664585,
 					"file-info": {
 						"purpose": "none"
 					}

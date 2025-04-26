@@ -1,0 +1,15 @@
+{
+	"name": "normal_text2x",
+	"plugin-id": "Text",
+	"sid": 384268600489929,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "alphaclamp2",
+			"name": "AlphaClamp"
+		}
+	]
+}

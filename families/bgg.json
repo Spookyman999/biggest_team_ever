@@ -21,6 +21,7 @@
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"bg"
+		"bg",
+		"rain"
 	]
 }

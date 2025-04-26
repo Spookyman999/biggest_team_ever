@@ -1,0 +1,69 @@
+{
+	"name": "bloom_filter",
+	"plugin-id": "Sprite",
+	"sid": 808335692601797,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "multiply",
+			"name": "Multiply"
+		},
+		{
+			"effectId": "federicoCalchera_boxBlurHorizontal",
+			"name": "BoxBlurHorizontal"
+		},
+		{
+			"effectId": "federicoCalchera_boxBlurVertical",
+			"name": "BoxBlurVertical"
+		},
+		{
+			"effectId": "radialblur",
+			"name": "RadialBlur"
+		},
+		{
+			"effectId": "overlay",
+			"name": "Overlay"
+		},
+		{
+			"effectId": "screen",
+			"name": "Screen"
+		},
+		{
+			"effectId": "vignette",
+			"name": "Vignette"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5410672,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 878333677070252,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

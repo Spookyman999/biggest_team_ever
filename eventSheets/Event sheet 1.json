@@ -12,6 +12,26 @@
 			"sid": 455646029297923
 		},
 		{
+			"eventType": "variable",
+			"name": "checkpoint_x",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 946524252184827
+		},
+		{
+			"eventType": "variable",
+			"name": "checkpoint_Y",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 959594246211635
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Player_Input",
@@ -637,6 +657,32 @@
 									]
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-floor",
+									"objectClass": "player",
+									"sid": 902100222516514,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 672321165817452,
+									"parameters": {
+										"audio-file": "30_Jump_4",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								}
+							],
+							"sid": 273865219953727
 						}
 					],
 					"isOrBlock": true
@@ -651,7 +697,20 @@
 							"behaviorType": "Platform"
 						}
 					],
-					"actions": [],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 226778306262253,
+							"parameters": {
+								"audio-file": "39_Block_4",
+								"loop": "not-looping",
+								"volume": "-5",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
 					"sid": 916553954982485,
 					"children": [
 						{
@@ -1433,6 +1492,37 @@
 			"eventType": "block",
 			"conditions": [
 				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 587575482041325
+				}
+			],
+			"actions": [
+				{
+					"id": "tween-two-properties",
+					"objectClass": "engulf",
+					"sid": 646078180024195,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "scale",
+						"end-x": "0",
+						"end-y": "0",
+						"time": "1",
+						"ease": "easeinsine",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 794839325169288
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
 					"id": "is-on-floor",
 					"objectClass": "player",
 					"sid": 939920004274853,
@@ -1500,7 +1590,20 @@
 					}
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 442288450082083,
+					"parameters": {
+						"audio-file": "08_Bite_04",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
 			"sid": 676438826410671,
 			"children": [
 				{
@@ -2480,11 +2583,11 @@
 				{
 					"id": "fade-volume",
 					"objectClass": "Audio",
-					"sid": 962805966893585,
+					"sid": 914481996325598,
 					"parameters": {
 						"tag": "MUSICPLAYER.id",
 						"db": "MUSICPLAYER.VOLUME",
-						"duration": "1",
+						"duration": "5",
 						"ending": "keep-playing"
 					}
 				}
@@ -2508,9 +2611,59 @@
 		},
 		{
 			"eventType": "block",
-			"conditions": [],
-			"actions": [],
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player_visual",
+					"sid": 325141607250957,
+					"parameters": {
+						"object": "button"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 719400729288238,
+					"parameters": {
+						"audio-file": "Sound_Ideas,_SPACE,_COMPUTER_-_SPACE_SHIP_CONSOLE_-_BEEP,_ELECTRONIC,_SCI_FI_01",
+						"loop": "not-looping",
+						"volume": "-15",
+						"stereo-pan": "0",
+						"tag-optional": "\"random\""
+					}
+				}
+			],
 			"sid": 878311403289551
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player",
+					"sid": 978236230198084,
+					"parameters": {
+						"object": "button"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 817629278565576,
+					"parameters": {
+						"audio-file": "Sound_Ideas,_SPACE,_COMPUTER_-_SPACE_SHIP_CONSOLE_-_BEEP,_ELECTRONIC,_SCI_FI_01",
+						"loop": "not-looping",
+						"volume": "-15",
+						"stereo-pan": "0",
+						"tag-optional": "\"random\""
+					}
+				}
+			],
+			"sid": 117345239279790
 		},
 		{
 			"eventType": "group",
@@ -3144,6 +3297,14 @@
 													"parameters": {
 														"instance-variable": "activated",
 														"value": "true"
+													}
+												},
+												{
+													"id": "save",
+													"objectClass": "System",
+													"sid": 324996786909363,
+													"parameters": {
+														"slot": "\"save\""
 													}
 												}
 											],
@@ -3984,6 +4145,31 @@
 			"conditions": [
 				{
 					"id": "on-collision-with-another-object",
+					"objectClass": "wheel",
+					"sid": 338705832547260,
+					"parameters": {
+						"object": "attack2"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player_visual",
+					"sid": 568482456703447,
+					"parameters": {
+						"instance-variable": "hp",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 486192186705996
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
 					"objectClass": "player_visual",
 					"sid": 603056219609952,
 					"parameters": {
@@ -4271,6 +4457,30 @@
 							}
 						},
 						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 530523976266990,
+							"parameters": {
+								"audio-file": "04_Fire_explosion_04_medium",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 331501842264633,
+							"parameters": {
+								"audio-file": "69_Enemy_death_01",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
 							"sid": 154327619335272,
@@ -4314,6 +4524,18 @@
 							}
 						},
 						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 953202740161595,
+							"parameters": {
+								"audio-file": "55_Encounter_02",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
 							"id": "spawn-another-object",
 							"objectClass": "player_visual",
 							"sid": 615932457986014,
@@ -4349,9 +4571,21 @@
 							"sid": 329445345954712
 						},
 						{
-							"id": "restart-layout",
+							"id": "wait",
 							"objectClass": "System",
-							"sid": 141834857682344
+							"sid": 365761156789034,
+							"parameters": {
+								"seconds": "0.5",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "load",
+							"objectClass": "System",
+							"sid": 783613742401796,
+							"parameters": {
+								"slot": "\"save\""
+							}
 						}
 					],
 					"sid": 908318957573328
@@ -4461,6 +4695,436 @@
 				}
 			],
 			"sid": 391127260768251
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "player_visual",
+					"sid": 541811336947060
+				}
+			],
+			"actions": [
+				{
+					"id": "set-angle",
+					"objectClass": "player_visual",
+					"sid": 783739706182602,
+					"parameters": {
+						"angle": "0"
+					}
+				}
+			],
+			"sid": 955610244812020
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-ended",
+					"objectClass": "Audio",
+					"sid": 851973173122361,
+					"parameters": {
+						"tag": "\"guitar_bot\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "stop-following",
+					"objectClass": "wheel2",
+					"sid": 401672348369142,
+					"behaviorType": "Follow"
+				},
+				{
+					"id": "set-active",
+					"objectClass": "sine_obj",
+					"sid": 298250605838051,
+					"behaviorType": "Sine",
+					"parameters": {
+						"state": "inactive"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "sine_obj",
+					"sid": 598682638456738,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetAngle",
+						"end-value": "90",
+						"time": "5",
+						"ease": "easeinsine",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "fren",
+					"sid": 821027858412480,
+					"parameters": {
+						"animation": "\"Animation 2\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 766631950542795
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "player",
+					"sid": 744543695678709
+				}
+			],
+			"actions": [
+				{
+					"id": "save",
+					"objectClass": "System",
+					"sid": 937689623848879,
+					"parameters": {
+						"slot": "\"save\""
+					}
+				}
+			],
+			"sid": 929597228984476,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 947560888277233,
+							"parameters": {
+								"variable": "checkpoint_x",
+								"comparison": 1,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 960883764672996,
+							"parameters": {
+								"variable": "checkpoint_Y",
+								"comparison": 1,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "player",
+							"sid": 771188299178867,
+							"parameters": {
+								"x": "checkpoint_x",
+								"y": "checkpoint_Y"
+							}
+						}
+					],
+					"sid": 142055834544260
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player",
+					"sid": 299612811835004,
+					"parameters": {
+						"object": "checkpoint"
+					}
+				},
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player_visual",
+					"sid": 839988919373406,
+					"parameters": {
+						"object": "checkpoint"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "spawn-another-object",
+					"objectClass": "player_visual",
+					"sid": 437660967108507,
+					"parameters": {
+						"object": "Particles3",
+						"layer": "\"effects\"",
+						"image-point": "1",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "shake",
+					"objectClass": "camera",
+					"sid": 715363973675613,
+					"behaviorType": "ScrollTo",
+					"parameters": {
+						"magnitude": "5",
+						"duration": "0.4",
+						"mode": "constant-magnitude"
+					}
+				},
+				{
+					"id": "save",
+					"objectClass": "System",
+					"sid": 212317361177211,
+					"parameters": {
+						"slot": "\"save\""
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "checkpoint",
+					"sid": 790102661209392
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 256974653242890,
+					"parameters": {
+						"audio-file": "39_Absorb_04",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
+			"sid": 865853192359628,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player",
+					"sid": 264469577324777,
+					"parameters": {
+						"object": "stop"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "fade-volume",
+					"objectClass": "Audio",
+					"sid": 959338387736625,
+					"parameters": {
+						"tag": "\"guitar_bot\"",
+						"db": "-100",
+						"duration": "5",
+						"ending": "stop"
+					}
+				},
+				{
+					"id": "stop-following",
+					"objectClass": "wheel2",
+					"sid": 735566699825531,
+					"behaviorType": "Follow"
+				},
+				{
+					"id": "set-active",
+					"objectClass": "sine_obj",
+					"sid": 726037253720792,
+					"behaviorType": "Sine",
+					"parameters": {
+						"state": "inactive"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "sine_obj",
+					"sid": 450997141005044,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetAngle",
+						"end-value": "90",
+						"time": "5",
+						"ease": "easeinsine",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "fren",
+					"sid": 156299156533622,
+					"parameters": {
+						"animation": "\"Animation 2\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 459811376593325
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player",
+					"sid": 443043628143700,
+					"parameters": {
+						"object": "next"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "spawn-another-object",
+					"objectClass": "player_visual",
+					"sid": 298889078050521,
+					"parameters": {
+						"object": "Particles3",
+						"layer": "\"effects\"",
+						"image-point": "1",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "shake",
+					"objectClass": "camera",
+					"sid": 635554713370604,
+					"behaviorType": "ScrollTo",
+					"parameters": {
+						"magnitude": "5",
+						"duration": "0.4",
+						"mode": "constant-magnitude"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 793680835291006,
+					"parameters": {
+						"audio-file": "48_Speed_up_02",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "tween-two-properties",
+					"objectClass": "EXPLOSION",
+					"sid": 808223072691544,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "scale",
+						"end-x": "15",
+						"end-y": "15",
+						"time": "0.25",
+						"ease": "easeoutsine",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 347442716134589
+				},
+				{
+					"id": "go-to-nextprevious-layout",
+					"objectClass": "System",
+					"sid": 454547982756157,
+					"parameters": {
+						"which": "next"
+					}
+				}
+			],
+			"sid": 215961996631651
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-load-complete",
+					"objectClass": "System",
+					"sid": 382419464516179
+				}
+			],
+			"actions": [
+				{
+					"id": "set-vector-x",
+					"objectClass": "player",
+					"sid": 979519109349048,
+					"behaviorType": "Platform",
+					"parameters": {
+						"vector-x": "0"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player",
+					"sid": 501344226837974,
+					"parameters": {
+						"instance-variable": "angle_vector",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 590739718972898,
+					"parameters": {
+						"variable": "angle_velocity",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 680915034140688
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 247107923522865
+				}
+			],
+			"actions": [
+				{
+					"id": "set-angle",
+					"objectClass": "player_visual",
+					"sid": 888896476193832,
+					"parameters": {
+						"angle": "0"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "player",
+					"sid": 496681716341854,
+					"parameters": {
+						"angle": "0"
+					}
+				}
+			],
+			"sid": 319448864420286
 		}
 	],
 	"sid": 323462168211922

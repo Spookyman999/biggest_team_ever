@@ -1,0 +1,29 @@
+{
+	"name": "new",
+	"plugin-id": "NinePatch",
+	"sid": 689103591795946,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 841514656156592
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 100,
+		"height": 100,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 9576839,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

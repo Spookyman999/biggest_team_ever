@@ -6,7 +6,7 @@
 		"type": "Audio",
 		"properties": {
 			"timescale-audio": "off",
-			"save-load": "all",
+			"save-load": "none",
 			"play-in-background": false,
 			"latency-hint": "interactive",
 			"enable-multiple-tags": true,

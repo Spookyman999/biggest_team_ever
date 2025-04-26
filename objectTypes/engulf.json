@@ -1,0 +1,58 @@
+{
+	"name": "engulf",
+	"plugin-id": "Sprite",
+	"sid": 182510424425872,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 720243458692777
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 502,
+						"height": 504,
+						"originX": 0.49800796812749004,
+						"originY": 0.49603174603174605,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 2288351,
+						"collisionPoly": {
+							"points": [
+								0.24402390438247012,
+								0.29464285714285715,
+								0.7400398406374502,
+								0.29464285714285715,
+								0.7400398406374502,
+								0.7886904761904762,
+								0.24402390438247012,
+								0.7886904761904762
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 142762791585559,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

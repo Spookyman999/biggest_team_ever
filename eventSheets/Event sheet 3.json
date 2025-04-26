@@ -1,0 +1,435 @@
+{
+	"name": "Event sheet 3",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "global_text",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 678457588121421
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 418777603579747,
+					"parameters": {
+						"key": 69
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 966235950540006,
+					"parameters": {
+						"variable": "global_text",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 348474681712048
+		},
+		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-image-offset-x",
+					"objectClass": "bgg",
+					"sid": 993098679876974,
+					"parameters": {
+						"offset-x": "Self.scroll_x+Self.ImageOffsetX"
+					}
+				},
+				{
+					"id": "set-image-offset-y",
+					"objectClass": "bgg",
+					"sid": 640227364093683,
+					"parameters": {
+						"offset-y": "Self.scroll_y+Self.ImageOffsetY"
+					}
+				}
+			],
+			"sid": 812212822091660
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 482049539269584,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "0"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 549379584755245
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 650826837382763,
+					"parameters": {
+						"text": "\"asimilation succesful\"",
+						"duration": "0.5"
+					}
+				}
+			],
+			"sid": 319551243474912
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 892819408738026,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "1"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 607837089639124
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 336946939660348,
+					"parameters": {
+						"text": "\"model creation permanantly stopped\"",
+						"duration": "2"
+					}
+				}
+			],
+			"sid": 790082115421694
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 737523828665898,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "2"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 431405973111214
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 983543166826920,
+					"parameters": {
+						"text": "\"H.A.V.E.N AI finally complete\"",
+						"duration": "0.5"
+					}
+				}
+			],
+			"sid": 856715018543178
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 709763062383931,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "3"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 333945125815896
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 654878867683345,
+					"parameters": {
+						"text": "\"human population left 1 million\"",
+						"duration": "2"
+					}
+				}
+			],
+			"sid": 399672485271439
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 404682700753317,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "4"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 366342840170854
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 428673013851584,
+					"parameters": {
+						"text": "\"H.A.V.E.N systems recovering\"",
+						"duration": "0.5"
+					}
+				}
+			],
+			"sid": 836303511915832
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 274660252458001,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "5"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 134587857428609
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 200325711155119,
+					"parameters": {
+						"text": "\"ACID RAIN\"",
+						"duration": "0.5"
+					}
+				}
+			],
+			"sid": 121831229159127
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 317026059042416,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "6"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 957656026996512
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 582320597585675,
+					"parameters": {
+						"text": "\"UNSTABLE STRUCTURE\"",
+						"duration": "0.5"
+					}
+				}
+			],
+			"sid": 913868350463674
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 296725883468972,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "7"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 568594999408907
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 905517085168817,
+					"parameters": {
+						"text": "\"THE LAST SUPERSTRUCTURE\"",
+						"duration": "0.5"
+					}
+				}
+			],
+			"sid": 570568746404156
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 267724535443660,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "8"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 545867193438109
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 328459166612185,
+					"parameters": {
+						"text": "\"STABILIZATION INITIATED\"",
+						"duration": "0.5"
+					}
+				}
+			],
+			"sid": 926333121499012
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 284593552421912,
+					"parameters": {
+						"variable": "global_text",
+						"comparison": 0,
+						"value": "9"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 826810565920824
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 479092605062616,
+					"parameters": {
+						"text": "\"THE END\"",
+						"duration": "0.5"
+					}
+				}
+			],
+			"sid": 599564880574567
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-running-typewriter-text",
+					"objectClass": "dialog_X",
+					"sid": 165889673784986
+				}
+			],
+			"actions": [],
+			"sid": 957409384946382,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 716592496417301,
+							"parameters": {
+								"interval-seconds": "0.1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 585643537759656,
+							"parameters": {
+								"audio-file": "Dialogue sfx",
+								"loop": "not-looping",
+								"volume": "-15",
+								"stereo-pan": "0",
+								"tag-optional": "\"random\""
+							}
+						},
+						{
+							"id": "set-playback-rate",
+							"objectClass": "Audio",
+							"sid": 632963915778586,
+							"parameters": {
+								"tag": "\"random\"",
+								"playback-rate": "random(0.5,1.5)"
+							}
+						}
+					],
+					"sid": 467080338472267
+				}
+			]
+		}
+	],
+	"sid": 609309536717650
+}

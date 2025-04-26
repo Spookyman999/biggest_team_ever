@@ -1,0 +1,15 @@
+{
+	"name": "dialog_X",
+	"plugin-id": "Text",
+	"sid": 323608593761953,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "alphaclamp2",
+			"name": "AlphaClamp"
+		}
+	]
+}

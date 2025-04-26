@@ -32,6 +32,10 @@
 	],
 	"effectTypes": [
 		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		},
+		{
 			"effectId": "glowhorizontal",
 			"name": "GlowHorizontal"
 		},
