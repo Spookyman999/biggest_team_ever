@@ -754,7 +754,8 @@
 						"Grace_time": 0,
 						"coyote_time": 0,
 						"throw_availability": 1,
-						"angle_vector": 0
+						"angle_vector": 0,
+						"spawner": 0
 					},
 					"behaviors": {
 						"Tween": {

@@ -917,6 +917,30 @@
 					"file-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "Dystopian style song.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 914251815524840,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Song 1.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 651452240053680,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Song 2.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 645952190488723,
+					"file-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
@@ -1085,7 +1109,7 @@
 		"scriptsType": "module",
 		"framerateMode": "vsync",
 		"sampling": "nearest",
-		"downscaling": "medium",
+		"downscaling": "low",
 		"renderingMode": "auto",
 		"anisotropicFiltering": "auto",
 		"zNear": 1,
@@ -1100,5 +1124,5 @@
 	},
 	"viewportWidth": 640,
 	"viewportHeight": 360,
-	"firstLayout": null
+	"firstLayout": "title"
 }

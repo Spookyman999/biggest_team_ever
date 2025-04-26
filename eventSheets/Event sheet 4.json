@@ -368,6 +368,26 @@
 			],
 			"actions": [
 				{
+					"id": "fade-volume",
+					"objectClass": "Audio",
+					"sid": 634264242136845,
+					"parameters": {
+						"tag": "\"title\"",
+						"db": "-100",
+						"duration": "1",
+						"ending": "stop"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 421098039493843,
+					"parameters": {
+						"seconds": "1.0",
+						"use-timescale": true
+					}
+				},
+				{
 					"id": "tween-two-properties",
 					"objectClass": "engulf",
 					"sid": 542343674766657,

@@ -4604,6 +4604,16 @@
 						"comparison": 3,
 						"value": "0"
 					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "player",
+					"sid": 243877456821827,
+					"parameters": {
+						"instance-variable": "spawner",
+						"comparison": 0,
+						"value": "1"
+					}
 				}
 			],
 			"actions": [],
@@ -4648,7 +4658,8 @@
 					],
 					"sid": 114104948804437
 				}
-			]
+			],
+			"isOrBlock": true
 		},
 		{
 			"eventType": "block",
@@ -4989,6 +5000,15 @@
 			],
 			"actions": [
 				{
+					"id": "set-instvar-value",
+					"objectClass": "player",
+					"sid": 453051370865759,
+					"parameters": {
+						"instance-variable": "spawner",
+						"value": "01"
+					}
+				},
+				{
 					"id": "spawn-another-object",
 					"objectClass": "player_visual",
 					"sid": 298889078050521,
@@ -5021,6 +5041,26 @@
 						"volume": "0",
 						"stereo-pan": "0",
 						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "fade-volume",
+					"objectClass": "Audio",
+					"sid": 372527859589182,
+					"parameters": {
+						"tag": "MUSICPLAYER.id",
+						"db": "-100",
+						"duration": "3",
+						"ending": "stop"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 585030426788418,
+					"parameters": {
+						"seconds": "3",
+						"use-timescale": false
 					}
 				},
 				{

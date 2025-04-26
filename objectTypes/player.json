@@ -39,6 +39,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 311009898698517
+		},
+		{
+			"name": "spawner",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 262078701984361
 		}
 	],
 	"behaviorTypes": [
